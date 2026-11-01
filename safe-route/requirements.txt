@@ -1,0 +1,10 @@
+Flask
+flask-cors
+gunicorn
+osmnx
+networkx
+joblib
+numpy
+pandas
+scikit-learn
+requests

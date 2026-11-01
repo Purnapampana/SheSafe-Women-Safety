@@ -1,7 +1,9 @@
+import os
+
 import requests
 
 
-TOMTOM_API_KEY = "BLMGvuvF7320vw1Ois2mZGNEpZtRXHOG"
+TOMTOM_API_KEY = os.getenv("TOMTOM_API_KEY", "")
 
 
 def get_route_bbox(
