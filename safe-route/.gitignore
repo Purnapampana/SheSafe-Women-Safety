@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+.env.*
+*.log
+
+cache/
+data/road_graph_cache/
+data/safety_cache/
