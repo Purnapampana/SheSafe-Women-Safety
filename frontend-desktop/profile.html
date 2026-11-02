@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>SheSafe - Profile</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="desktop.css">
+
+</head>
+
+
+<body>
+
+<div class="profile-mobile-page">
+
+
+    <!-- =========================================
+         TOP BAR
+    ========================================== -->
+
+    <header class="profile-mobile-header">
+
+        <button
+            class="profile-back-button"
+            type="button"
+            onclick="window.location.href='home.html'">
+
+            ←
+
+        </button>
+
+
+        <div class="profile-header-text">
+
+            <h1>
+                Profile
+            </h1>
+
+            <p>
+                Manage your SheSafe account
+            </p>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         USER CARD
+    ========================================== -->
+
+    <section class="profile-user-card">
+
+        <div class="profile-avatar">
+
+            👤
+
+        </div>
+
+
+        <div class="profile-user-info">
+
+            <h2 id="profileDisplayName">
+                User
+            </h2>
+
+            <p id="profileDisplayEmail">
+                SheSafe member
+            </p>
+
+            <span class="profile-complete-badge">
+
+                ✓ Profile
+
+            </span>
+
+        </div>
+
+
+        <button
+            class="profile-edit-button"
+            type="button"
+            onclick="window.location.href='complete-profile.html'">
+
+            Edit
+
+        </button>
+
+    </section>
+
+
+
+    <!-- =========================================
+         ACCOUNT
+    ========================================== -->
+
+    <section class="profile-menu-section">
+
+        <div class="profile-section-heading">
+
+            ACCOUNT
+
+        </div>
+
+
+        <!-- PERSONAL PROFILE -->
+
+        <button
+            class="profile-menu-item"
+            type="button"
+            onclick="window.location.href='complete-profile.html'">
+
+            <div class="profile-menu-icon purple">
+                👤
+            </div>
+
+            <div class="profile-menu-content">
+
+                <strong>
+                    Personal Information
+                </strong>
+
+                <span>
+                    Name, DOB, medical & emergency details
+                </span>
+
+            </div>
+
+            <div class="profile-menu-arrow">
+                →
+            </div>
+
+        </button>
+
+
+        <!-- CONTACTS -->
+
+        <button
+            class="profile-menu-item"
+            type="button"
+            onclick="window.location.href='contacts.html'">
+
+            <div class="profile-menu-icon pink">
+                👥
+            </div>
+
+            <div class="profile-menu-content">
+
+                <strong>
+                    Emergency Contacts
+                </strong>
+
+                <span>
+                    Manage your trusted people
+                </span>
+
+            </div>
+
+            <div class="profile-menu-arrow">
+                →
+            </div>
+
+        </button>
+
+
+        <!-- LANGUAGE -->
+
+        <button
+            class="profile-menu-item"
+            type="button"
+            onclick="openLanguageSelector()">
+
+            <div class="profile-menu-icon blue">
+                🌐
+            </div>
+
+            <div class="profile-menu-content">
+
+                <strong>
+                    Language
+                </strong>
+
+                <span id="selectedLanguage">
+                    English
+                </span>
+
+            </div>
+
+            <div class="profile-menu-arrow">
+                →
+            </div>
+
+        </button>
+
+    </section>
+
+
+
+
+
+    <!-- =========================================
+         LOGOUT
+    ========================================== -->
+
+    <section class="profile-logout-section">
+
+        <button
+            class="profile-logout-button"
+            type="button"
+            onclick="logout()">
+
+            <span class="logout-icon">
+                🚪
+            </span>
+
+            <span>
+                Logout
+            </span>
+
+        </button>
+
+    </section>
+
+
+
+    <!-- =========================================
+         BOTTOM NAVIGATION
+    ========================================== -->
+
+    <nav class="mobile-bottom-nav">
+
+        <button  onclick="window.location.href='home.html'">
+
+            <span>⌂</span>
+
+            <small>
+                Home
+            </small>
+
+        </button>
+
+
+        <button
+            onclick="window.location.href='safety-tools.html'">
+
+            <span>🛡️</span>
+
+            <small>
+                Safety
+            </small>
+
+        </button>
+
+
+        <button
+            onclick="openProfile()">
+
+            <span>●</span>
+
+            <small>
+                Profile
+            </small>
+
+        </button>
+
+    </nav>
+
+
+</div>
+
+
+
+<!-- =========================================
+     LANGUAGE POPUP
+========================================= -->
+
+<div
+    id="languagePopup"
+    class="language-popup-overlay">
+
+    <div class="language-popup">
+
+        <div class="language-popup-header">
+
+            <h3>
+                🌐 Select Language
+            </h3>
+
+            <button
+                type="button"
+                onclick="closeLanguageSelector()">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="language-option"
+            onclick="selectLanguage('English')">
+
+            🇬🇧
+            <span>English</span>
+
+        </button>
+
+
+        <button
+            type="button"
+            class="language-option"
+            onclick="selectLanguage('తెలుగు')">
+
+            🇮🇳
+            <span>తెలుగు</span>
+
+        </button>
+
+
+        <button
+            type="button"
+            class="language-option"
+            onclick="selectLanguage('हिन्दी')">
+
+            🇮🇳
+            <span>हिन्दी</span>
+
+        </button>
+
+
+        <button
+            type="button"
+            class="language-option"
+            onclick="selectLanguage('தமிழ்')">
+
+            🇮🇳
+            <span>தமிழ்</span>
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<script src="script.js"></script>
+
+
+<script>
+
+/* =========================================
+   PROFILE DISPLAY
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const username =
+            localStorage.getItem("username");
+
+        const email =
+            localStorage.getItem("email");
+
+        const nameElement =
+            document.getElementById(
+                "profileDisplayName"
+            );
+
+        const emailElement =
+            document.getElementById(
+                "profileDisplayEmail"
+            );
+
+
+        if (nameElement && username) {
+
+            nameElement.innerText =
+                username;
+
+        }
+
+
+        if (emailElement && email) {
+
+            emailElement.innerText =
+                email;
+
+        }
+
+
+        const savedLanguage =
+            localStorage.getItem(
+                "selectedLanguage"
+            );
+
+        if (savedLanguage) {
+
+            document.getElementById(
+                "selectedLanguage"
+            ).innerText =
+                savedLanguage;
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   LANGUAGE
+========================================= */
+
+function openLanguageSelector() {
+
+    const popup =
+        document.getElementById(
+            "languagePopup"
+        );
+
+    if (popup) {
+
+        popup.classList.add("show");
+
+    }
+
+}
+
+
+function closeLanguageSelector() {
+
+    const popup =
+        document.getElementById(
+            "languagePopup"
+        );
+
+    if (popup) {
+
+        popup.classList.remove("show");
+
+    }
+
+}
+
+
+function selectLanguage(language) {
+
+    localStorage.setItem(
+        "selectedLanguage",
+        language
+    );
+
+
+    const element =
+        document.getElementById(
+            "selectedLanguage"
+        );
+
+    if (element) {
+
+        element.innerText =
+            language;
+
+    }
+
+
+    closeLanguageSelector();
+
+}
+
+</script>
+
+</body>
+
+</html>

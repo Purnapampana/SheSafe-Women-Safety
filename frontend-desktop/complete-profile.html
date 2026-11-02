@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>SheSafe - Complete Profile</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="desktop.css">
+
+</head>
+
+
+<body>
+
+<div class="dashboard">
+
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="dashboard-header">
+
+        <div>
+
+            <h1>🛡️ SheSafe</h1>
+
+            <p>
+                Complete your safety profile
+            </p>
+
+        </div>
+ <div class="profile-header">
+
+    <button
+        class="back-button"
+        onclick="window.location.href='home.html'">
+
+        ← Back
+
+    </button>
+
+</div>
+    </header>
+   
+
+
+    <!-- ================= PROFILE ================= -->
+
+    <div class="feature-page profile-page">
+
+
+        <!-- PROFILE TITLE -->
+
+        <div class="profile-title">
+
+            <div class="profile-icon">
+                👤
+            </div>
+
+            <div>
+
+                <h2>
+                    Complete Your Profile
+                </h2>
+
+                <p>
+                    This information can help provide
+                    better assistance during an emergency.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= PERSONAL INFORMATION ================= -->
+
+        <div class="profile-section">
+
+            <h3>
+                👤 Personal Information
+            </h3>
+
+
+            <label for="fullName">
+                Full Name
+            </label>
+
+            <input
+                type="text"
+                id="fullName"
+                placeholder="Enter your full name"
+            >
+
+
+            <label for="dateOfBirth">
+                Date of Birth
+            </label>
+
+            <input
+                type="date"
+                id="dateOfBirth"
+            >
+
+        </div>
+
+
+        <!-- ================= MEDICAL INFORMATION ================= -->
+
+        <div class="profile-section">
+
+            <h3>
+                🩺 Medical Information
+            </h3>
+
+
+            <label for="bloodGroup">
+                Blood Group
+            </label>
+
+            <select id="bloodGroup">
+
+                <option value="">
+                    Select blood group
+                </option>
+
+                <option value="A+">
+                    A+
+                </option>
+
+                <option value="A-">
+                    A-
+                </option>
+
+                <option value="B+">
+                    B+
+                </option>
+
+                <option value="B-">
+                    B-
+                </option>
+
+                <option value="AB+">
+                    AB+
+                </option>
+
+                <option value="AB-">
+                    AB-
+                </option>
+
+                <option value="O+">
+                    O+
+                </option>
+
+                <option value="O-">
+                    O-
+                </option>
+
+            </select>
+
+
+            <label for="medicalConditions">
+                Medical Conditions
+            </label>
+
+            <textarea
+                id="medicalConditions"
+                placeholder="Example: Asthma, diabetes, epilepsy. If none, enter None."
+            ></textarea>
+
+
+            <label for="medications">
+                Current Medications
+            </label>
+
+            <textarea
+                id="medications"
+                placeholder="Enter your current medications. If none, enter None."
+            ></textarea>
+
+
+            <label for="allergies">
+                Allergies
+            </label>
+
+            <textarea
+                id="allergies"
+                placeholder="Example: Penicillin, food allergies. If none, enter None."
+            ></textarea>
+
+        </div>
+
+
+        <!-- ================= EMERGENCY INFORMATION ================= -->
+
+        <div class="profile-section">
+
+            <h3>
+                🚨 Emergency Information
+            </h3>
+
+
+            <label for="emergencyDetails">
+                Emergency Details
+            </label>
+
+            <textarea
+                id="emergencyDetails"
+                placeholder="Enter any important information emergency responders should know."
+            ></textarea>
+
+
+            <label for="preferredHospital">
+                Preferred Hospital
+            </label>
+
+            <input
+                type="text"
+                id="preferredHospital"
+                placeholder="Enter preferred hospital"
+            >
+
+        </div>
+
+
+        <!-- ================= SAVE ================= -->
+
+        <button
+            class="profile-save-button"
+            onclick="saveProfile()"
+        >
+
+            ✓ Save & Continue
+
+        </button>
+
+
+        <!-- STATUS -->
+
+        <div
+            id="profileStatus"
+            class="status-box"
+        ></div>
+
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+<script>
+    window.addEventListener("DOMContentLoaded", function () {
+        loadProfile();
+    });
+</script>
+
+</body>
+
+</html>

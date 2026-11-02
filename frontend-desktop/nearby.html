@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Nearby Services - SheSafe</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="desktop.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- HEADER -->
+
+    <header class="dashboard-header">
+
+        <div>
+
+            <h1>📍 Nearby Services</h1>
+
+            <p>
+                Find important places near your current location
+            </p>
+
+        </div>
+
+        <button onclick="window.location.href='home.html'">
+            Back
+        </button>
+
+    </header>
+
+
+    <!-- LOCATION -->
+
+    <div class="feature-page">
+
+        <h2>📍 My Location</h2>
+
+        <button onclick="findNearbyServices()">
+
+            📍 Find Nearby Services
+
+        </button>
+
+        <div
+            id="nearbyStatus"
+            class="status-box">
+
+            Click the button to find services near you.
+
+        </div>
+
+    </div>
+
+
+    <!-- SERVICES -->
+
+    <div class="feature-page">
+
+        <h2>🛡️ Safety Services</h2>
+
+        <div class="actions">
+
+            <button onclick="findNearby('hospital')">
+                🏥 Nearby Hospitals
+            </button>
+
+            <button onclick="findNearby('police station')">
+                🚔 Nearby Police Stations
+            </button>
+
+            <button onclick="findNearby('crowded public places')">
+                👥 Crowded / Public Places
+            </button>
+
+            <button onclick="findNearby('bus station')">
+                🚌 Public Transport
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- HELPLINES -->
+
+    <div class="feature-page">
+
+        <h2>☎️ Emergency Helplines</h2>
+
+        <div class="actions">
+
+            <button onclick="callPolice()">
+                🚔 Police - 112
+            </button>
+
+            <button onclick="callWomenHelpline()">
+                👩 Women Helpline - 181
+            </button>
+
+            <button onclick="callAmbulance()">
+                🚑 Ambulance - 108
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- RESULTS -->
+
+    <div class="feature-page">
+
+        <h2>🔎 Nearby Search</h2>
+
+        <div
+            id="nearbyResults"
+            class="status-box">
+
+            Select a service above.
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

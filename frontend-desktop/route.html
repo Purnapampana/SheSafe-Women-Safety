@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Safe Route - SheSafe</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+    <link rel="stylesheet" href="desktop.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- HEADER -->
+    <header class="dashboard-header">
+
+        <div>
+
+            <h1>🛡️ Safe Route Recommendation</h1>
+
+            <p>
+                Find a safer route based on safety conditions
+            </p>
+
+        </div>
+
+        <button
+            onclick="window.location.href='home.html'">
+            Back
+        </button>
+
+    </header>
+
+
+    <!-- MAIN CONTENT -->
+    <div class="feature-page">
+
+
+        <!-- ROUTE SEARCH -->
+        <div class="safe-route-card">
+
+            <h2>📍 Plan Your Journey</h2>
+
+            <label for="startLocation">
+                Starting Location
+            </label>
+
+            <input
+                type="text"
+                id="startLocation"
+                placeholder="Enter starting location">
+
+
+            <label for="destination">
+                Destination
+            </label>
+
+            <input
+                type="text"
+                id="destination"
+                placeholder="Enter destination">
+
+
+            <button
+                class="safe-route-button"
+                onclick="findSafeRoutes()">
+
+                🔍 Find Safe Routes
+
+            </button>
+
+        </div>
+        <!-- GOOGLE MAP -->
+<div class="safe-route-card">
+
+    <h2>🗺️ Route Map</h2>
+
+    <div id="safeRouteMap"></div>
+
+</div>
+
+
+        <!-- ROUTE RESULTS -->
+        <div
+            id="safeRouteResults"
+            style="display:none;">
+
+
+            <!-- SAFEST ROUTE -->
+            <div class="safe-route-card safest-route">
+
+                <h2>
+                    🥇 Safest Route
+                </h2>
+
+                <div class="risk-score">
+
+                    <span>
+                        Risk Score
+                    </span>
+
+                    <strong id="safestRiskScore">
+                        --
+                    </strong>
+
+                </div>
+
+
+                <div class="route-details">
+
+                    <p>
+                        🛣️ Distance:
+                        <strong id="safestDistance">
+                            --
+                        </strong>
+                    </p>
+
+                    <p>
+                        ⏱️ Estimated Time:
+                        <strong id="safestTime">
+                            --
+                        </strong>
+                    </p>
+
+                </div>
+
+
+                <div class="safety-factors">
+
+                    <div>
+                        💡
+                        <span>Well-lit Roads</span>
+                        <strong id="lightingScore">
+                            --
+                        </strong>
+                    </div>
+
+
+                    <div>
+                        📹
+                        <span>CCTV Coverage</span>
+                        <strong id="cctvScore">
+                            --
+                        </strong>
+                    </div>
+
+
+                    <div>
+                        👥
+                        <span>Crowded Areas</span>
+                        <strong id="crowdScore">
+                            --
+                        </strong>
+                    </div>
+
+
+                    <div>
+                        👮
+                        <span>Police Patrol</span>
+                        <strong id="policeScore">
+                            --
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="view-route-button"
+                    onclick="viewSafestRoute()">
+
+                    🗺️ View Route
+
+                </button>
+
+            </div>
+
+
+            <!-- ALTERNATIVE ROUTE -->
+            <div class="safe-route-card">
+
+                <h2>
+                    🥈 Alternative Route
+                </h2>
+
+
+                <div class="risk-score">
+
+                    <span>
+                        Risk Score
+                    </span>
+
+                    <strong id="alternativeRiskScore">
+                        --
+                    </strong>
+
+                </div>
+
+
+                <div class="route-details">
+
+                    <p>
+                        🛣️ Distance:
+                        <strong id="alternativeDistance">
+                            --
+                        </strong>
+                    </p>
+
+                    <p>
+                        ⏱️ Estimated Time:
+                        <strong id="alternativeTime">
+                            --
+                        </strong>
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="view-route-button"
+                    onclick="viewAlternativeRoute()">
+
+                    🗺️ View Alternative Route
+
+                </button>
+
+            </div>
+
+
+            <!-- AI EXPLANATION -->
+            <div class="safe-route-card">
+
+                <h2>
+                    🤖 AI Safety Analysis
+                </h2>
+
+                <p id="aiSafetyAnalysis">
+
+                    Safety analysis will appear here.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBy26TffxNvZlhMRiCYzPWW48c8Bgud1Uo&loading=async">
+</script>
+
+</body>
+
+</body>
+
+</html>

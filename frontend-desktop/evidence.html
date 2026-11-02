@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Emergency Evidence - SheSafe</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+    <style>
+
+        /* =====================================================
+           EVIDENCE DATE SEARCH
+        ===================================================== */
+
+        .evidence-search {
+            width: 100%;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+            box-sizing: border-box;
+        }
+
+        .evidence-search-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #4c1d95;
+            margin-bottom: 14px;
+        }
+
+        .evidence-search-row {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .evidence-search-row input[type="date"] {
+            flex: 1;
+            min-width: 220px;
+            padding: 12px 14px;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
+            font-size: 15px;
+            background: #ffffff;
+            color: #17121f;
+            box-sizing: border-box;
+        }
+
+        .evidence-search-row button {
+            border: none;
+            border-radius: 10px;
+            padding: 12px 18px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .evidence-search-button {
+            background: #7c3aed;
+            color: white;
+        }
+
+        .evidence-search-button:hover {
+            background: #6d28d9;
+        }
+
+        .evidence-clear-button {
+            background: #e5e7eb;
+            color: #374151;
+        }
+
+        .evidence-clear-button:hover {
+            background: #d1d5db;
+        }
+
+        .evidence-search-status {
+            margin-top: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #6b21a8;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 600px) {
+
+            .evidence-search {
+                padding: 16px;
+            }
+
+            .evidence-search-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .evidence-search-row input[type="date"],
+            .evidence-search-row button {
+                width: 100%;
+                min-width: 0;
+            }
+
+        }
+
+    </style>
+
+    <link rel="stylesheet" href="desktop.css">
+
+</head>
+
+
+<body>
+
+<div class="dashboard">
+
+    <!-- =====================================================
+         HEADER
+    ===================================================== -->
+
+    <header class="dashboard-header evidence-header">
+
+        <div>
+
+            <h1>🔐 Emergency Evidence</h1>
+
+            <p>
+                Secure audio and video recordings
+            </p>
+
+        </div>
+
+        <button
+            onclick="window.location.href='home.html'">
+
+            Back
+
+        </button>
+
+    </header>
+
+
+    <!-- =====================================================
+         EVIDENCE PAGE
+    ===================================================== -->
+
+    <div class="evidence-page">
+
+        <!-- =================================================
+             TITLE
+        ================================================= -->
+
+        <div class="evidence-page-title">
+
+            <div>
+
+                <h2>📁 My Emergency Recordings</h2>
+
+                <p>
+                    Your latest emergency recordings
+                </p>
+
+            </div>
+
+            <div
+                id="recordingCount"
+                class="recording-count">
+
+                0 Recordings
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             DATE SEARCH
+        ================================================= -->
+
+        <div class="evidence-search">
+
+            <div class="evidence-search-title">
+
+                🔎 Search Evidence by Date
+
+            </div>
+
+
+            <div class="evidence-search-row">
+
+                <input
+                    type="date"
+                    id="evidenceSearchDate"
+                >
+
+
+                <button
+                    type="button"
+                    onclick="searchEvidenceByDate()"
+                    class="evidence-search-button">
+
+                    🔎 Search
+
+                </button>
+
+
+                <button
+                    type="button"
+                    onclick="clearEvidenceDateSearch()"
+                    class="evidence-clear-button">
+
+                    ✕ Clear
+
+                </button>
+
+            </div>
+
+
+            <div
+                id="evidenceSearchStatus"
+                class="evidence-search-status">
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             EVIDENCE LIST
+        ================================================= -->
+
+        <div id="evidenceList">
+
+            <div class="evidence-loading">
+
+                ⏳ Loading recordings...
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+
+<script>
+
+    // =====================================================
+    // SEARCH EVIDENCE BY DATE
+    // =====================================================
+
+    function searchEvidenceByDate() {
+
+        const dateInput =
+            document.getElementById(
+                "evidenceSearchDate"
+            );
+
+        const status =
+            document.getElementById(
+                "evidenceSearchStatus"
+            );
+
+
+        if (!dateInput) {
+            return;
+        }
+
+
+        const selectedDate =
+            dateInput.value;
+
+
+        if (!selectedDate) {
+
+            if (status) {
+
+                status.innerText =
+                    "⚠️ Please select a date.";
+
+            }
+
+            return;
+        }
+
+
+        if (status) {
+
+            status.innerText =
+                "🔎 Searching evidence for " +
+                selectedDate +
+                "...";
+
+        }
+
+
+        loadEvidence(selectedDate);
+
+    }
+
+
+    // =====================================================
+    // CLEAR DATE SEARCH
+    // =====================================================
+
+    function clearEvidenceDateSearch() {
+
+        const dateInput =
+            document.getElementById(
+                "evidenceSearchDate"
+            );
+
+        const status =
+            document.getElementById(
+                "evidenceSearchStatus"
+            );
+
+
+        if (dateInput) {
+
+            dateInput.value = "";
+
+        }
+
+
+        if (status) {
+
+            status.innerText = "";
+
+        }
+
+
+        // Show all recordings again
+        loadEvidence();
+
+    }
+
+
+    // =====================================================
+    // LOAD EVIDENCE
+    // =====================================================
+
+    loadEvidence();
+
+</script>
+
+
+</body>
+
+</html>

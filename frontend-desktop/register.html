@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Women Security - Register</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="desktop.css">
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <h1>🛡 Smart Women Security</h1>
+
+    <h2>Create Account</h2>
+
+
+    <!-- ================================================= -->
+    <!-- REGISTRATION SECTION -->
+    <!-- ================================================= -->
+
+    <div id="registrationSection">
+
+        <input
+            type="text"
+            id="fullName"
+            placeholder="Full Name"
+        >
+
+        <input
+            type="email"
+            id="email"
+            placeholder="Email"
+        >
+
+        <input
+            type="text"
+            id="phoneNumber"
+            placeholder="Phone Number"
+        >
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Password"
+        >
+        <label for="preferredLanguage">Preferred Language / భాష / भाषा / زبان</label>
+
+<select id="preferredLanguage" name="preferredLanguage" required>
+    <option value="en" selected>English</option>
+    <option value="te">తెలుగు (Telugu)</option>
+    <option value="hi">हिन्दी (Hindi)</option>
+    <option value="ur" dir="rtl">اردو (Urdu)</option>
+</select>
+
+        <button onclick="register()">
+            Register
+        </button>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- OTP SECTION -->
+    <!-- ================================================= -->
+
+    <div
+        id="registrationOtpSection"
+        style="display: none;"
+    >
+
+        <h3>🔐 Verify Your Email</h3>
+
+        <p>
+            We have sent a 6-digit OTP to your email address.
+        </p>
+
+
+        <!-- OTP INPUT -->
+
+        <input
+            type="text"
+            id="registrationOtp"
+            placeholder="Enter 6-digit OTP"
+            maxlength="6"
+            inputmode="numeric"
+            autocomplete="one-time-code"
+        >
+
+
+        <!-- VERIFY -->
+
+        <button
+            id="verifyRegistrationButton"
+            onclick="verifyRegistrationOtp()"
+        >
+            Verify OTP
+        </button>
+
+
+        <!-- RESEND -->
+
+        <button
+            type="button"
+            id="resendRegistrationOtpButton"
+            onclick="resendRegistrationOtp()"
+            disabled
+        >
+            Resend OTP
+        </button>
+
+
+        <!-- TIMER -->
+
+        <p id="registrationOtpTimer">
+            Resend available in 30 seconds
+        </p>
+
+
+        <!-- MESSAGE -->
+
+        <p id="registrationOtpMessage"></p>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- LOGIN -->
+    <!-- ================================================= -->
+
+    <p>
+
+        Already have an account?
+
+        <a href="index.html">
+            Login
+        </a>
+
+    </p>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
+

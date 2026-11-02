@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Live Location - SheSafe</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Leaflet Map CSS -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+    <link rel="stylesheet" href="desktop.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="dashboard-header">
+
+        <div>
+
+            <h1>📍 Live Location</h1>
+
+            <p>
+                Share your current location safely
+            </p>
+
+        </div>
+
+        <button
+            onclick="window.location.href='home.html'">
+
+            Back
+
+        </button>
+
+    </header>
+
+
+    <!-- ================= CURRENT LOCATION ================= -->
+
+    <div class="feature-page">
+
+        <h2>📍 My Current Location</h2>
+
+        <p>
+            Your location will update automatically
+            while live tracking is active.
+        </p>
+
+
+        <div
+            id="locationStatus"
+            class="status-box">
+
+            🔴 Tracking is not active.
+
+        </div>
+
+
+        <label for="latitude">
+            Latitude
+        </label>
+
+        <input
+            type="text"
+            id="latitude"
+            readonly
+            placeholder="--">
+
+
+        <label for="longitude">
+            Longitude
+        </label>
+
+        <input
+            type="text"
+            id="longitude"
+            readonly
+            placeholder="--">
+
+
+        <label for="accuracy">
+            Accuracy
+        </label>
+
+        <input
+            type="text"
+            id="accuracy"
+            readonly
+            placeholder="--">
+
+
+        <div class="actions">
+
+            <button
+                onclick="startGPSTracking()">
+
+                📍 Start Live Tracking
+
+            </button>
+
+
+            <button
+                onclick="stopGPSTracking()">
+
+                ⛔ Stop Tracking
+
+            </button>
+
+
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= LIVE MAP ================= -->
+
+    <div class="feature-page">
+
+        <h2>🗺️ Live Map</h2>
+
+        <p>
+            Your current position will appear on the map
+            while GPS tracking is active.
+        </p>
+
+
+        <div
+            id="liveMap">
+        </div>
+
+    </div>
+
+<!-- ================= ROUTE ================= -->
+
+<div class="feature-page">
+
+    <h2>🛣️ Route & Destination</h2>
+
+    <label for="destination">
+
+        Destination
+
+    </label>
+
+    <input
+        type="text"
+        id="destination"
+        placeholder="Example: Vijayawada Railway Station">
+
+
+    <div class="actions">
+
+        <button
+            onclick="findRoute()">
+
+            🗺️ Show Route
+
+        </button>
+
+    </div>
+
+
+    <div
+        id="routeResult"
+        class="status-box">
+
+        Enter a destination to calculate
+        your route.
+
+    </div>
+
+</div>
+
+   <!-- ================= TRACKING INFORMATION ================= -->
+
+<div class="feature-page">
+
+    <h2>📊 Tracking Information</h2>
+
+    <div class="status-box">
+
+        <p>
+
+            <strong>
+                Tracking Status:
+            </strong>
+
+            <span id="trackingStatus">
+                Not Active
+            </span>
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                Last Updated:
+            </strong>
+
+            <span id="lastUpdated">
+                --
+            </span>
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                GPS Accuracy:
+            </strong>
+
+            <span id="gpsAccuracy">
+                --
+            </span>
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                Distance:
+            </strong>
+
+            <span id="routeDistance">
+                --
+            </span>
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                Estimated Arrival:
+            </strong>
+
+            <span id="routeETA">
+                --
+            </span>
+
+        </p>
+
+    </div>
+
+</div>
+
+
+    <!-- ================= FAMILY SHARING ================= -->
+
+    <div class="feature-page">
+
+        <h2>👨‍👩‍👧 Share Live Location</h2>
+
+        <p>
+            Share your current location with
+            your emergency contacts.
+        </p>
+
+
+        <div class="actions">
+
+            <button
+                onclick="shareLiveLocation()">
+
+                👨‍👩‍👧 Share With Family
+
+            </button>
+
+        </div>
+
+
+        <div
+            id="familyTrackingStatus"
+            class="status-box">
+
+            Live location sharing is not active.
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= EMERGENCY ACTIONS ================= -->
+
+</div>
+
+
+<!-- Leaflet Map JavaScript -->
+
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

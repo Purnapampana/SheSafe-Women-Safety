@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Emergency Recording - SheSafe</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="desktop.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <header class="dashboard-header">
+
+        <div>
+
+            <h1>🎙️ Emergency Recording</h1>
+
+            <p>
+                Secure audio and video evidence
+            </p>
+
+        </div>
+
+        <button onclick="window.location.href='home.html'">
+            Back
+        </button>
+
+    </header>
+
+
+    <!-- ================= AUDIO ================= -->
+
+    <div class="feature-page">
+
+        <h2>🎙️ Audio Recording</h2>
+
+        <p>
+            Audio recording can be activated during
+            an emergency.
+        </p>
+
+        <div
+            id="audioStatus"
+            class="status-box">
+
+            🔴 Audio recording is not active.
+
+        </div>
+
+
+        <div class="actions">
+
+            <button onclick="startAudioRecording()">
+
+                🎙️ Start Audio
+
+            </button>
+
+
+            <button onclick="stopAudioRecording()">
+
+                ⛔ Stop Audio
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= VIDEO ================= -->
+
+    <div class="feature-page">
+
+        <h2>📹 Video Recording</h2>
+
+        <p>
+            Record emergency video evidence using
+            your device camera.
+        </p>
+
+
+        <video
+            id="cameraPreview"
+            autoplay
+            muted
+            playsinline
+            style="
+                width:100%;
+                max-width:600px;
+                border-radius:15px;
+                background:#000;
+            ">
+        </video>
+
+
+        <div
+            id="videoStatus"
+            class="status-box">
+
+            🔴 Video recording is not active.
+
+        </div>
+
+
+        <div class="actions">
+
+            <button onclick="startVideoRecording('user')">
+
+                🤳 Front Camera
+
+            </button>
+
+
+            <button onclick="startVideoRecording('environment')">
+
+                📷 Rear Camera
+
+            </button>
+
+
+            <button onclick="stopVideoRecording()">
+
+                ⛔ Stop Video
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= EVIDENCE ================= -->
+
+    <div class="feature-page">
+
+        <h2>🔐 Emergency Evidence</h2>
+
+        <div
+            id="evidenceStatus"
+            class="status-box">
+
+            No evidence recorded yet.
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

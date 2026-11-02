@@ -1,0 +1,854 @@
+/* =========================================
+   SHESAFE ORIGINAL COLOR THEME
+   Keeps the NEW dimensions/layout
+   ========================================= */
+
+/* MAIN BACKGROUND */
+body {
+    background: #120d18;
+    color: white;
+}
+
+.dashboard {
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(124, 58, 237, 0.35),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(168, 85, 247, 0.18),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #21113b,
+            #120d18 65%
+        );
+}
+
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.dashboard-header {
+    background: rgba(255, 255, 255, 0.97);
+    color: #17121f;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.30);
+}
+
+.dashboard-header h1 {
+    color: #6d28d9;
+}
+
+.dashboard-header p {
+    color: #777;
+}
+
+.dashboard-header button {
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #9333ea
+        );
+
+    color: white;
+}
+
+
+/* =========================================
+   WELCOME
+   ========================================= */
+
+.welcome {
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #faf7ff
+        );
+
+    color: #17121f;
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.20);
+}
+
+.welcome h2 {
+    color: #6d28d9;
+}
+
+.welcome p {
+    color: #666;
+}
+
+
+/* SYSTEM ACTIVE BADGE */
+
+.welcome::after {
+    background: rgba(124, 58, 237, 0.10);
+
+    color: #6d28d9;
+
+    border: 1px solid rgba(124, 58, 237, 0.20);
+}
+
+
+/* =========================================
+   SOS SECTION
+   ========================================= */
+
+.sos-section {
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #faf7ff
+        );
+
+    color: #17121f;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+.sos-section h2 {
+    color: #b91c1c;
+}
+
+.sos-section p {
+    color: #777;
+}
+
+
+/* =========================================
+   SOS BUTTON
+   ========================================= */
+
+.sos-button {
+    background:
+        radial-gradient(
+            circle,
+            #ef4444,
+            #b91c1c
+        );
+
+    border: 10px solid #fecaca;
+
+    color: white;
+
+    box-shadow:
+        0 0 0 12px rgba(239, 68, 68, 0.08),
+        0 15px 40px rgba(220, 38, 38, 0.45);
+}
+
+.sos-button:hover {
+    box-shadow:
+        0 0 0 18px rgba(239, 68, 68, 0.08),
+        0 20px 50px rgba(220, 38, 38, 0.55);
+}
+
+
+/* =========================================
+   SECTION HEADINGS
+   ========================================= */
+
+.features h2,
+.features h3 {
+    color: #6d28d9;
+}
+
+
+/* =========================================
+   FEATURE CARDS
+   ========================================= */
+
+.feature-card {
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #faf7ff
+        );
+
+    color: #17121f;
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.20);
+}
+
+
+/* Purple circle in top-right */
+.feature-card::before {
+    background: rgba(124, 58, 237, 0.10);
+}
+
+
+/* Card hover */
+.feature-card:hover {
+    box-shadow:
+        0 20px 45px rgba(124, 58, 237, 0.30);
+}
+
+
+/* Card titles */
+.feature-card h3,
+.feature-card h2 {
+    color: #6d28d9;
+}
+
+
+/* Card descriptions */
+.feature-card p {
+    color: #666;
+}
+
+
+/* =========================================
+   ICONS
+   ========================================= */
+
+/* Remove the colored pastel boxes
+   if you want the ORIGINAL look */
+
+.feature-card .icon,
+.feature-card .feature-icon {
+    background: transparent;
+    color: #7c3aed;
+}
+
+
+/* =========================================
+   VOICE SOS
+   ========================================= */
+
+.voice-sos {
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #faf7ff
+        );
+
+    color: #17121f;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.20);
+}
+
+.voice-sos h3 {
+    color: #6d28d9;
+}
+
+.voice-sos p {
+    color: #666;
+}
+
+.voice-sos button {
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #9333ea
+        );
+
+    color: white;
+}
+
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+.dashboard-footer {
+    color: #c4b5fd;
+     text-align: center;
+     width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* =========================================
+   LINKS / GENERAL PURPLE
+   ========================================= */
+
+a {
+    color: #7c3aed;
+}
+
+button {
+    font-family: inherit;
+}
+/* =========================================================
+   SHESAFE DASHBOARD - MOBILE DESIGN
+========================================================= */
+
+@media (max-width: 600px) {
+
+    /* Main dashboard */
+    .dashboard {
+        width: 100%;
+        min-height: 100vh;
+        padding: 12px;
+        box-sizing: border-box;
+
+        background:
+            radial-gradient(
+                circle at 10% 5%,
+                rgba(124, 58, 237, 0.35),
+                transparent 32%
+            ),
+            linear-gradient(
+                145deg,
+                #21113b,
+                #120d18 70%
+            );
+    }
+
+
+    /* =====================================================
+       HEADER
+    ===================================================== */
+
+    .dashboard-header {
+        width: 100%;
+        margin: 0;
+        padding: 18px 15px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        box-sizing: border-box;
+
+        border-radius: 22px;
+
+        background: #ffffff;
+
+        box-shadow:
+            0 10px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    .brand-area {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+
+        text-align: center;
+    }
+
+    .brand-icon {
+        font-size: 26px;
+    }
+
+    .dashboard-header h1 {
+        margin: 0;
+        font-size: 29px;
+        line-height: 1.1;
+    }
+
+    .dashboard-header p {
+        margin: 4px 0 0;
+        font-size: 12px;
+    }
+
+
+    /* Profile + Logout */
+    .header-actions {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+    }
+
+    .dashboard-header button {
+        width: 100% !important;
+        min-height: 46px;
+
+        margin: 0 !important;
+        padding: 10px !important;
+
+        border-radius: 12px;
+
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+
+    /* =====================================================
+       WELCOME CARD
+    ===================================================== */
+
+    .welcome {
+        width: 100%;
+        margin: 14px 0;
+        padding: 22px 18px;
+
+        box-sizing: border-box;
+
+        border-radius: 22px;
+
+        background:
+            linear-gradient(
+                135deg,
+                #ffffff,
+                #faf7ff
+            );
+
+        box-shadow:
+            0 10px 25px rgba(0, 0, 0, 0.18);
+    }
+
+    .welcome-label {
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.7px;
+    }
+
+    .welcome h2 {
+        margin: 8px 0;
+        font-size: 30px;
+        line-height: 1.1;
+    }
+
+    .welcome p {
+        margin: 0;
+        font-size: 15px;
+        line-height: 1.55;
+    }
+
+
+    /* Safety status */
+    .safety-status {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        margin-top: 18px;
+        padding: 12px;
+
+        border-radius: 14px;
+
+        background: #f5efff;
+        border: 1px solid #e5d8ff;
+    }
+
+    .status-dot {
+        width: 11px;
+        height: 11px;
+        flex-shrink: 0;
+
+        border-radius: 50%;
+
+        background: #22c55e;
+    }
+
+    .safety-status strong {
+        display: block;
+        font-size: 14px;
+        color: #4c1d95;
+    }
+
+    .safety-status span {
+        display: block;
+        margin-top: 2px;
+
+        font-size: 12px;
+        color: #666;
+    }
+
+
+    /* =====================================================
+       SOS SECTION
+    ===================================================== */
+
+    .sos-section {
+        width: 100%;
+        margin: 14px 0;
+
+        padding: 28px 15px 30px;
+
+        box-sizing: border-box;
+
+        border-radius: 24px;
+
+        background:
+            linear-gradient(
+                145deg,
+                #ffffff,
+                #faf7ff
+            );
+
+        box-shadow:
+            0 12px 30px rgba(0, 0, 0, 0.22);
+    }
+
+    .sos-label {
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 1px;
+    }
+
+    .sos-section h2 {
+        margin: 8px 0;
+
+        font-size: 28px;
+        line-height: 1.15;
+
+        color: #b91c1c;
+    }
+
+    .sos-section p {
+        max-width: 310px;
+        margin: auto;
+
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+
+    /* =====================================================
+       SOS BUTTON
+    ===================================================== */
+
+    .sos-button {
+        width: 145px;
+        height: 145px;
+
+        margin-top: 25px;
+
+        border: 9px solid #fecaca;
+        border-radius: 50%;
+
+        font-size: 31px;
+
+        background:
+            radial-gradient(
+                circle,
+                #ef4444,
+                #b91c1c
+            );
+
+        box-shadow:
+            0 0 0 9px rgba(239, 68, 68, 0.08),
+            0 14px 30px rgba(220, 38, 38, 0.45);
+    }
+
+    .sos-button:active {
+        transform: scale(0.95);
+    }
+
+    .sos-section small {
+        display: block;
+
+        max-width: 270px;
+        margin: 17px auto 0;
+
+        font-size: 11px;
+        line-height: 1.4;
+        color: #888;
+    }
+
+
+    /* =====================================================
+       QUICK ACTIONS TITLE
+    ===================================================== */
+
+    .dashboard-section {
+        width: 100%;
+        margin-top: 25px;
+    }
+
+    .section-heading {
+        margin-bottom: 14px;
+    }
+
+    .section-heading h2 {
+        margin: 0;
+
+        color: white;
+
+        font-size: 28px;
+        line-height: 1.15;
+    }
+
+    .section-heading p {
+        margin: 5px 0 0;
+
+        color: #cfc1dc;
+
+        font-size: 13px;
+        line-height: 1.4;
+    }
+
+
+    /* =====================================================
+       QUICK ACTION CARDS
+    ===================================================== */
+
+    .features.quick-actions {
+        display: grid;
+
+        grid-template-columns: 1fr;
+
+        gap: 13px;
+
+        width: 100%;
+    }
+
+    .feature-card {
+        width: 100%;
+        min-height: 140px;
+
+        padding: 20px;
+
+        box-sizing: border-box;
+
+        border-radius: 21px;
+
+        background:
+            linear-gradient(
+                145deg,
+                #ffffff,
+                #faf7ff
+            );
+
+        box-shadow:
+            0 9px 24px rgba(0, 0, 0, 0.18);
+    }
+
+    .feature-card:active {
+        transform: scale(0.98);
+    }
+
+
+    /* Card top */
+    .feature-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        margin-bottom: 12px;
+    }
+
+
+    /* Icons */
+    .feature-icon {
+        width: 46px;
+        height: 46px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 13px;
+
+        font-size: 24px;
+    }
+
+
+    /* Arrow */
+    .feature-card .arrow {
+        font-size: 22px;
+        color: #8b5cf6;
+    }
+
+
+    /* Card title */
+    .feature-card h3 {
+        margin: 0 0 6px;
+
+        font-size: 20px;
+        line-height: 1.2;
+
+        color: #6d28d9;
+    }
+
+
+    /* Card description */
+    .feature-card p {
+        margin: 0;
+
+        font-size: 13px;
+        line-height: 1.45;
+
+        color: #666;
+    }
+
+
+    /* =====================================================
+       VOICE SAFETY
+    ===================================================== */
+
+    .voice-sos {
+        width: 100%;
+        margin-top: 14px;
+
+        padding: 20px 17px;
+
+        box-sizing: border-box;
+
+        border-radius: 21px;
+    }
+
+    .voice-sos h3 {
+        font-size: 21px;
+    }
+
+    .voice-sos p {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .voice-sos button {
+        width: 100%;
+        min-height: 46px;
+
+        border-radius: 12px;
+
+        font-size: 14px;
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    .dashboard-footer {
+        width: 100%;
+
+        padding: 20px 10px;
+
+        box-sizing: border-box;
+
+        text-align: center;
+
+        font-size: 12px;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .dashboard {
+        padding: 9px;
+    }
+
+    .dashboard-header {
+        padding: 16px 12px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 26px;
+    }
+
+    .welcome {
+        padding: 19px 16px;
+    }
+
+    .welcome h2 {
+        font-size: 27px;
+    }
+
+    .sos-section {
+        padding: 24px 12px 28px;
+    }
+
+    .sos-section h2 {
+        font-size: 25px;
+    }
+
+    .sos-button {
+        width: 132px;
+        height: 132px;
+        font-size: 28px;
+    }
+
+    .feature-card {
+        min-height: 130px;
+        padding: 17px;
+    }
+
+    .feature-card h3 {
+        font-size: 18px;
+    }
+}
+
+
+/* =========================================================
+   ANDROID / CAPACITOR SAFE AREA
+========================================================= */
+
+@supports (padding: env(safe-area-inset-top)) {
+
+    .dashboard {
+        padding-top:
+            max(12px, env(safe-area-inset-top));
+
+        padding-bottom:
+            max(30px, env(safe-area-inset-bottom));
+
+        padding-left:
+            max(9px, env(safe-area-inset-left));
+
+        padding-right:
+            max(9px, env(safe-area-inset-right));
+    }
+}
+
+/* =========================================================
+   MOBILE COMPACT LAYOUT OVERRIDES — SheSafe
+   Keeps important controls visible while reducing excess space.
+   ========================================================= */
+@media (max-width: 600px) {
+    .dashboard { padding: 8px 10px 88px !important; }
+    .dashboard-header { padding: 12px 13px !important; gap: 9px !important; border-radius: 18px !important; }
+    .brand-area { justify-content: flex-start !important; text-align: left !important; }
+    .dashboard-header h1 { font-size: 24px !important; }
+    .dashboard-header p { font-size: 11px !important; }
+    .dashboard-header button { min-height: 40px !important; padding: 8px !important; }
+    .welcome { margin: 9px 0 !important; padding: 14px !important; border-radius: 18px !important; }
+    .welcome h2 { font-size: 25px !important; margin: 4px 0 !important; }
+    .welcome p { font-size: 13px !important; line-height: 1.4 !important; }
+    .safety-status { margin-top: 10px !important; padding: 9px !important; }
+    .sos-section { margin: 9px 0 !important; padding: 16px 12px 17px !important; border-radius: 19px !important; }
+    .sos-section h2 { font-size: 23px !important; }
+    .sos-section p { font-size: 13px !important; }
+    .sos-button { width: 112px !important; height: 112px !important; margin-top: 12px !important; border-width: 7px !important; font-size: 27px !important; }
+    .sos-section small { margin-top: 10px !important; }
+    .dashboard-section { margin-top: 13px !important; }
+    .section-heading { margin-bottom: 9px !important; }
+    .section-heading h2 { font-size: 22px !important; }
+    .section-heading p { font-size: 12px !important; }
+    .features.quick-actions { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 9px !important; }
+    .feature-card { min-height: 0 !important; padding: 12px !important; border-radius: 16px !important; }
+    .feature-top { margin-bottom: 7px !important; }
+    .feature-icon { width: 36px !important; height: 36px !important; font-size: 20px !important; }
+    .feature-card h3 { font-size: 15px !important; margin-bottom: 4px !important; }
+    .feature-card p { font-size: 11px !important; line-height: 1.3 !important; }
+    .voice-sos { margin-top: 9px !important; padding: 13px !important; }
+    .voice-sos h3 { font-size: 17px !important; }
+    .voice-sos p { font-size: 12px !important; }
+    .voice-sos button { min-height: 40px !important; }
+    .dashboard-footer { padding: 12px 8px !important; }
+}
+
+@media (max-height: 760px) and (max-width: 600px) {
+    .welcome { padding: 11px !important; }
+    .welcome h2 { font-size: 22px !important; }
+    .sos-section { padding: 12px 10px !important; }
+    .sos-button { width: 96px !important; height: 96px !important; font-size: 24px !important; }
+}

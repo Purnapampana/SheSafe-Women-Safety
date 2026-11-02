@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>SheSafe - Safety Tools</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+
+    <link rel="stylesheet" href="desktop.css">
+
+</head>
+
+
+<body>
+
+<div class="shesafe-tools-page">
+
+
+    <!-- HEADER -->
+
+    <header class="shesafe-page-header">
+
+        <button
+            onclick="window.location.href='home.html'">
+
+            ←
+
+        </button>
+
+        <div>
+
+            <h1>
+                Safety Tools
+            </h1>
+
+            <p>
+                Everything you need to stay safe
+            </p>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- SAFETY CENTER -->
+
+    <section class="tools-title">
+
+        <span>
+            🛡️
+        </span>
+
+        <div>
+
+            <h2>
+                Safety Center
+            </h2>
+
+            <p>
+                Choose a safety feature
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- TOOLS GRID -->
+
+    <div class="shesafe-tools-grid">
+
+
+        <!-- LIVE LOCATION -->
+
+        <button
+            class="shesafe-tool-card"
+            onclick="openGPS()">
+
+            <div class="tool-icon purple">
+                📍
+            </div>
+
+            <div>
+
+                <h3>
+                    Live Location
+                </h3>
+
+                <p>
+                    Track and share your current location.
+                </p>
+
+            </div>
+
+            <span>
+                →
+            </span>
+
+        </button>
+
+
+
+        <!-- SAFE ROUTE -->
+
+        <button
+            class="shesafe-tool-card"
+            onclick="window.location.href='safe-route.html'">
+
+            <div class="tool-icon blue">
+                🗺️
+            </div>
+
+            <div>
+
+                <h3>
+                    Safe Route
+                </h3>
+
+                <p>
+                    Find a safer route to your destination.
+                </p>
+
+            </div>
+
+            <span>
+                →
+            </span>
+
+        </button>
+
+
+
+        <!-- AI -->
+
+        <button
+            class="shesafe-tool-card"
+            onclick="openChatbot()">
+
+            <div class="tool-icon violet">
+                🤖
+            </div>
+
+            <div>
+
+                <h3>
+                    AI Assistant
+                </h3>
+
+                <p>
+                    Get intelligent safety guidance.
+                </p>
+
+            </div>
+
+            <span>
+                →
+            </span>
+
+        </button>
+
+
+
+        <!-- FAKE CALL -->
+
+        <button
+            class="shesafe-tool-card"
+            onclick="window.location.href='fake-call.html'">
+
+            <div class="tool-icon pink">
+                📞
+            </div>
+
+            <div>
+
+                <h3>
+                    Fake Call
+                </h3>
+
+                <p>
+                    Schedule a simulated call when needed.
+                </p>
+
+            </div>
+
+            <span>
+                →
+            </span>
+
+        </button>
+
+
+
+        <!-- EVIDENCE -->
+
+        <button
+            class="shesafe-tool-card"
+            onclick="window.location.href='evidence.html'">
+
+            <div class="tool-icon purple">
+                🔐
+            </div>
+
+            <div>
+
+                <h3>
+                    Emergency Evidence
+                </h3>
+
+                <p>
+                    View your secure emergency recordings.
+                </p>
+
+            </div>
+
+            <span>
+                →
+            </span>
+
+        </button>
+
+
+
+        <!-- INCIDENT -->
+
+        <button
+            class="shesafe-tool-card"
+            onclick="window.location.href='incident-report.html'">
+
+            <div class="tool-icon red">
+                📋
+            </div>
+
+            <div>
+
+                <h3>
+                    Report Incident
+                </h3>
+
+                <p>
+                    Report a safety incident securely.
+                </p>
+
+            </div>
+
+            <span>
+                →
+            </span>
+
+        </button>
+
+
+
+        <!-- TIMELINE -->
+
+        <button
+            class="shesafe-tool-card"
+            onclick="window.location.href='incident-timeline.html'">
+
+            <div class="tool-icon orange">
+                🕒
+            </div>
+
+            <div>
+
+                <h3>
+                    Incident Timeline
+                </h3>
+
+                <p>
+                    Review your previous safety activity.
+                </p>
+
+            </div>
+
+            <span>
+                →
+            </span>
+
+        </button>
+
+
+
+        <!-- NEARBY -->
+
+        <button
+            class="shesafe-tool-card"
+            onclick="window.location.href='nearby.html'">
+
+            <div class="tool-icon green">
+                🏥
+            </div>
+
+            <div>
+
+                <h3>
+                    Nearby Services
+                </h3>
+
+                <p>
+                    Find hospitals and police stations nearby.
+                </p>
+
+            </div>
+
+            <span>
+                →
+            </span>
+
+        </button>
+
+
+
+    </div>
+
+
+    <!-- BOTTOM NAV -->
+
+    <nav class="mobile-bottom-nav">
+
+        <button onclick="window.location.href='home.html'">
+
+            <span>⌂</span>
+
+            <small>
+                Home
+            </small>
+
+        </button>
+
+
+        <button class="active"
+            >
+
+            <span>🛡️</span>
+
+            <small>
+                Safety
+            </small>
+
+        </button>
+
+
+        <button
+            onclick="openProfile()">
+
+            <span>●</span>
+
+            <small>
+                Profile
+            </small>
+
+        </button>
+
+    </nav>
+    
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

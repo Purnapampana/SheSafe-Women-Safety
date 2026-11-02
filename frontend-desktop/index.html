@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SheSafe - Login</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="desktop.css">
+
+</head>
+
+<body>
+
+<div class="login-page">
+
+    <!-- LEFT SIDE -->
+    <div class="login-info">
+
+        <div class="brand">
+            ✦ <span>SheSafe</span>
+        </div>
+
+        <h1>
+            Your safety.<br>
+            Always within reach.
+        </h1>
+
+        <p class="description">
+            A smart women-safety platform for emergency alerts,
+            live location, safer routes and incident assistance.
+        </p>
+
+        <div class="highlights">
+
+            <div>
+                <h3>24/7</h3>
+                <p>Safety support</p>
+            </div>
+
+            <div>
+                <h3>1-Tap</h3>
+                <p>SOS alert</p>
+            </div>
+
+            <div>
+                <h3>Live</h3>
+                <p>Location sharing</p>
+            </div>
+
+        </div>
+
+    </div>
+<!-- FLOATING CHATBOT BUTTON -->
+<button 
+    class="floating-chatbot"
+    onclick="toggleChatbot()"
+    title="SheSafe Chatbot">
+    💬
+</button>
+
+<!-- FLOATING CHATBOT WINDOW -->
+<div id="chatbotWindow" class="chatbot-window">
+
+    <!-- CHAT HEADER -->
+    <div class="chatbot-header">
+
+        <div>
+            <strong>🤖 SheSafe Assistant</strong>
+            <span>Online • Safety Support</span>
+        </div>
+
+        <button 
+            class="chatbot-close"
+            onclick="toggleChatbot()">
+            ×
+        </button>
+
+    </div>
+
+    <!-- CHAT MESSAGES -->
+    <div id="chatMessages" class="chat-messages">
+
+        <div class="bot-message">
+
+            🤖 <strong>SheSafe Assistant</strong>
+
+            <br><br>
+
+            Hello! 👋 I'm your safety assistant.
+
+            <br><br>
+
+            I can help you with emergency guidance,
+            first aid, police, hospitals and more.
+
+        </div>
+
+    </div>
+
+    <!-- QUICK OPTIONS -->
+    <div class="chatbot-quick-options">
+
+        <button onclick="askAI('I need safety guidance')">
+            🛡️ Safety
+        </button>
+
+        <button onclick="askAI('What should I do during an emergency?')">
+            🚨 Emergency
+        </button>
+
+        <button onclick="askAI('I need first aid information')">
+            🩹 First Aid
+        </button>
+
+        <button onclick="findNearbyPolice()">
+            🚔 Police
+        </button>
+
+        <button onclick="findNearbyHospitals()">
+            🏥 Hospital
+        </button>
+
+    </div>
+
+    <!-- INPUT -->
+    <div class="chatbot-input">
+
+        <input
+            type="text"
+            id="aiMessage"
+            placeholder="Type your question..."
+            onkeydown="handleAIEnter(event)"
+        >
+
+        <button onclick="sendAIMessage()">
+            ➤
+        </button>
+
+    </div>
+
+</div>
+    <!-- RIGHT SIDE -->
+    <div class="login-card">
+
+        <div class="card-brand">
+            ✦ <span>SheSafe</span>
+        </div>
+
+        <h2>Welcome back</h2>
+
+        <p class="login-subtitle">
+            Sign in to access your safety dashboard.
+        </p>
+
+
+        <label>
+            Username / Email
+        </label>
+
+        <input
+            type="email"
+            id="loginEmail"
+            placeholder="Enter your email"
+        >
+
+
+        <label>
+            Password
+        </label>
+
+        <input
+            type="password"
+            id="loginPassword"
+            placeholder="Enter your password"
+        >
+
+
+        <button
+    id="loginButton"
+    class="login-button"
+    onclick="login()">
+
+    Sign in
+
+</button>
+
+<p class="forgot-text">
+    <a href="forgot-password.html">
+        Forgot password?
+    </a>
+</p>
+
+<p class="register-text">
+    New user?
+    <a href="register.html">
+        Create an account
+    </a>
+</p>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    if (typeof restoreSheSafeSession === "function" &&
+        restoreSheSafeSession()) {
+        window.location.replace("home.html");
+    }
+});
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,442 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Super Admin OTP</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(
+                135deg,
+                #3b176d,
+                #241044,
+                #0f0a18
+            );
+
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .otp-card {
+            background: white;
+            width: 400px;
+            padding: 35px;
+            border-radius: 18px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #6d28d9;
+        }
+
+        p {
+            color: #666;
+        }
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 14px;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 18px;
+            text-align: center;
+            letter-spacing: 5px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+
+            background: linear-gradient(
+                135deg,
+                #7c3aed,
+                #9333ea
+            );
+
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            background: #aaa;
+            cursor: not-allowed;
+        }
+
+        .resend-button {
+            background: transparent;
+            color: #7c3aed;
+            margin-top: 10px;
+        }
+
+        .resend-button:hover:not(:disabled) {
+            background: #f3e8ff;
+        }
+
+        #otpStatus {
+            margin-top: 15px;
+            min-height: 20px;
+        }
+
+        #timer {
+            margin-top: 8px;
+            color: #777;
+            font-size: 14px;
+        }
+    </style>
+    <link rel="stylesheet" href="desktop.css">
+
+</head>
+
+<body>
+
+<div class="otp-card">
+
+    <h1>🔐 Super Admin Verification</h1>
+
+    <p>
+        An OTP has been sent to your registered
+        Super Admin email.
+    </p>
+
+    <input
+        type="text"
+        id="otp"
+        maxlength="6"
+        placeholder="Enter 6-digit OTP"
+        inputmode="numeric"
+    >
+
+    <button
+        id="verifyButton"
+        onclick="verifyOtp()"
+    >
+        Verify OTP
+    </button>
+
+    <button
+        id="resendButton"
+        class="resend-button"
+        onclick="resendOtp()"
+        disabled
+    >
+        Resend OTP
+    </button>
+
+    <div id="timer">
+        Resend available in 30 seconds
+    </div>
+
+    <div id="otpStatus"></div>
+
+</div>
+
+
+<script>
+
+const BASE_URL =
+    "https://shesafe-backend-api.onrender.com";
+
+let countdown = 30;
+let timerInterval;
+
+
+// ======================================================
+// VERIFY OTP
+// ======================================================
+
+async function verifyOtp() {
+
+    const otp =
+        document.getElementById("otp")
+            .value.trim();
+
+    const email =
+        localStorage.getItem(
+            "pendingSuperAdminEmail"
+        );
+
+    const status =
+        document.getElementById("otpStatus");
+
+    if (!email) {
+
+        status.innerText =
+            "❌ Super Admin email not found.";
+
+        return;
+    }
+
+    if (!/^\d{6}$/.test(otp)) {
+
+        status.innerText =
+            "❌ Please enter a valid 6-digit OTP.";
+
+        return;
+    }
+
+    try {
+
+        const response =
+            await fetch(
+                `${BASE_URL}/api/auth/verify-super-admin-otp`,
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        email: email,
+                        otp: otp
+                    })
+                }
+            );
+
+        const data =
+            await response.json();
+
+        if (
+            !response.ok ||
+            data.message !== "OTP_VERIFIED"
+        ) {
+
+            status.innerText =
+                "❌ " +
+                (
+                    data.message ||
+                    "Invalid OTP."
+                );
+
+            return;
+        }
+
+
+        // ==============================================
+        // SAVE AUTHENTICATION ONLY AFTER OTP VERIFICATION
+        // ==============================================
+
+        localStorage.setItem(
+            "token",
+            data.token
+        );
+
+        localStorage.setItem(
+            "userId",
+            String(data.userId)
+        );
+
+        localStorage.setItem(
+            "role",
+            data.role
+        );
+
+        localStorage.setItem(
+            "profileCompleted",
+            String(data.profileCompleted)
+        );
+
+        localStorage.removeItem(
+            "pendingSuperAdminEmail"
+        );
+
+
+        // ==============================================
+        // GO TO ADMIN DASHBOARD
+        // ==============================================
+
+        window.location.href =
+            "admin-dashboard.html";
+
+    }
+    catch (error) {
+
+        console.error(error);
+
+        status.innerText =
+            "❌ Cannot connect to backend.";
+    }
+}
+
+
+// ======================================================
+// RESEND OTP
+// ======================================================
+
+async function resendOtp() {
+
+    const email =
+        localStorage.getItem(
+            "pendingSuperAdminEmail"
+        );
+
+    const status =
+        document.getElementById(
+            "otpStatus"
+        );
+
+    const resendButton =
+        document.getElementById(
+            "resendButton"
+        );
+
+    if (!email) {
+
+        status.innerText =
+            "❌ Super Admin email not found.";
+
+        return;
+    }
+
+    // Disable immediately
+    resendButton.disabled = true;
+
+    status.innerText =
+        "Sending new OTP...";
+
+    try {
+
+        const response =
+            await fetch(
+                `${BASE_URL}/api/auth/resend-super-admin-otp`,
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        email: email
+                    })
+                }
+            );
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            status.innerText =
+                "❌ " +
+                (
+                    data.message ||
+                    "Unable to resend OTP."
+                );
+
+            // Allow retry after error
+            startResendTimer();
+
+            return;
+        }
+
+
+        // ==============================================
+        // SUCCESS
+        // ==============================================
+
+        status.innerText =
+            "✅ New OTP sent to your email.";
+
+        document.getElementById(
+            "otp"
+        ).value = "";
+
+        startResendTimer();
+
+    }
+    catch (error) {
+
+        console.error(error);
+
+        status.innerText =
+            "❌ Cannot connect to backend.";
+
+        startResendTimer();
+    }
+}
+
+
+// ======================================================
+// RESEND TIMER
+// ======================================================
+
+function startResendTimer() {
+
+    clearInterval(
+        timerInterval
+    );
+
+    countdown = 30;
+
+    const resendButton =
+        document.getElementById(
+            "resendButton"
+        );
+
+    const timer =
+        document.getElementById(
+            "timer"
+        );
+
+    resendButton.disabled = true;
+
+    timer.innerText =
+        `Resend available in ${countdown} seconds`;
+
+
+    timerInterval =
+        setInterval(() => {
+
+            countdown--;
+
+            if (countdown <= 0) {
+
+                clearInterval(
+                    timerInterval
+                );
+
+                resendButton.disabled =
+                    false;
+
+                resendButton.innerText =
+                    "Resend OTP";
+
+                timer.innerText =
+                    "You can request a new OTP.";
+
+                return;
+            }
+
+            timer.innerText =
+                `Resend available in ${countdown} seconds`;
+
+        }, 1000);
+}
+
+
+// ======================================================
+// START TIMER WHEN PAGE OPENS
+// ======================================================
+
+startResendTimer();
+
+</script>
+
+</body>
+</html>
+

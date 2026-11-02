@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Risk Zone Prediction - SheSafe</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+    <link rel="stylesheet" href="desktop.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🛡️ Risk Zone Prediction</h1>
+
+        <p>
+            Check the safety risk of your current location.
+        </p>
+
+
+        <!-- LOCATION CARD -->
+
+        <div class="risk-input-card">
+
+            <h2>📍 Check Your Location</h2>
+
+            <p>
+                SheSafe will automatically detect your
+                current location and check the nearby
+                safety risk.
+            </p>
+
+            <button onclick="checkCurrentLocation()">
+                📍 Check My Current Location
+            </button>
+
+            <div id="locationStatus"
+                 style="
+                    margin-top: 15px;
+                    text-align: center;
+                    color: #666;
+                 ">
+            </div>
+
+        </div>
+
+
+        <!-- RISK RESULT -->
+
+        <div id="riskResult"
+             class="risk-result">
+
+            <h2>📊 Risk Result</h2>
+
+            <p>
+                Click the button above to check your
+                current safety risk.
+            </p>
+
+        </div>
+
+
+        <!-- RISK LEGEND -->
+
+        <div class="risk-legend">
+
+            <h2>🎯 Risk Levels</h2>
+
+            <div>
+                🟢 <strong>Safe Zone</strong>
+            </div>
+
+            <div>
+                🟡 <strong>Moderate Risk</strong>
+            </div>
+
+            <div>
+                🟠 <strong>High Risk</strong>
+            </div>
+
+            <div>
+                🔴 <strong>Crime Hotspot</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

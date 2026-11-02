@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>SheSafe - Family & Friends</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+    <link rel="stylesheet" href="desktop.css">
+
+</head>
+
+
+<body>
+
+<div class="contacts-mobile-page">
+
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header class="contacts-header">
+
+        <button
+            type="button"
+            class="contacts-back-button"
+            onclick="window.location.href='profile.html'">
+
+            ←
+
+        </button>
+
+
+        <div>
+
+            <h1>
+                Family & Friends
+            </h1>
+
+            <p>
+                Your trusted emergency contacts
+            </p>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         CONTACT COUNT / INTRO
+    ========================================== -->
+
+    <section class="contacts-intro">
+
+        <div class="contacts-intro-icon">
+            👥
+        </div>
+
+        <div>
+
+            <h2>
+                Emergency Contacts
+            </h2>
+
+            <p>
+                People who can be contacted when you need help.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         ADD CONTACT BUTTON
+    ========================================== -->
+
+    <button
+        type="button"
+        class="add-contact-button"
+        onclick="openContactForm()">
+
+        <span class="add-contact-plus">
+            +
+        </span>
+
+        <span>
+            Add Emergency Contact
+        </span>
+
+        <span class="add-contact-arrow">
+            →
+        </span>
+
+    </button>
+
+
+
+    <!-- =========================================
+         CONTACT LIST
+    ========================================== -->
+
+    <section class="contacts-list-section">
+
+        <div class="contacts-section-title">
+
+            <span>
+                YOUR CONTACTS
+            </span>
+
+            <span
+                id="contactCount"
+                class="contact-count">
+
+                0
+
+            </span>
+
+        </div>
+
+
+        <div id="contactsContainer">
+
+            <div class="contacts-loading">
+
+                Loading contacts...
+
+            </div>
+
+        </div>
+
+    </section>
+
+<button
+    type="button"
+    class="profile-save-button"
+    onclick="window.location.href='home.html'">
+    ✓ Continue to Home
+</button>
+
+
+
+    <!-- =========================================
+         BOTTOM NAVIGATION
+    ========================================== -->
+
+    <nav class="mobile-bottom-nav">
+
+        <button onclick="window.location.href='home.html'">
+
+            <span>⌂</span>
+
+            <small>
+                Home
+            </small>
+
+        </button>
+
+
+        <button
+            onclick="window.location.href='safety-tools.html'">
+
+            <span>🛡️</span>
+
+            <small>
+                Safety
+            </small>
+
+        </button>
+
+
+        <button
+            onclick="openProfile()">
+
+            <span>●</span>
+
+            <small>
+                Profile
+            </small>
+
+        </button>
+
+    </nav>
+
+</div>
+
+
+
+<!-- =====================================================
+     ADD / EDIT CONTACT BOTTOM SHEET
+===================================================== -->
+
+<div
+    id="contactFormOverlay"
+    class="contact-form-overlay">
+
+
+    <div class="contact-form-sheet">
+
+
+        <!-- SHEET HEADER -->
+
+        <div class="contact-sheet-header">
+
+            <div>
+
+                <span class="contact-sheet-icon">
+                    👥
+                </span>
+
+                <div>
+
+                    <h2 id="contactFormTitle">
+                        Add Contact
+                    </h2>
+
+                    <p>
+                        Add someone you trust
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="contact-sheet-close"
+                onclick="closeContactForm()">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+
+        <!-- FORM -->
+
+        <input
+            type="hidden"
+            id="contactId">
+
+
+        <label>
+            Contact Name
+        </label>
+
+        <input
+            type="text"
+            id="contactName"
+            placeholder="Example: Amma ❤️">
+
+
+        <label>
+            Contact Number
+        </label>
+
+        <input
+            type="tel"
+            id="contactNumber"
+            placeholder="Enter phone number">
+
+
+        <label>
+            Contact Email
+        </label>
+
+        <input
+            type="email"
+            id="contactEmail"
+            placeholder="Enter email address">
+
+
+        <label>
+            Relationship
+        </label>
+
+        <input
+            type="text"
+            id="relationship"
+            placeholder="Mother, Father, Friend...">
+
+
+        <label>
+            Contact Group
+        </label>
+
+        <select id="groupName">
+
+            <option value="">
+                Select group
+            </option>
+
+            <option value="Family">
+                👨‍👩‍👧 Family
+            </option>
+
+            <option value="Friends">
+                👭 Friends
+            </option>
+
+            <option value="Colleagues">
+                💼 Colleagues
+            </option>
+
+            <option value="Other">
+                👤 Other
+            </option>
+
+        </select>
+
+
+        <label>
+            Priority
+        </label>
+
+        <select id="priority">
+
+            <option value="1">
+                1 - Highest
+            </option>
+
+            <option value="2">
+                2 - Medium
+            </option>
+
+            <option value="3">
+                3 - Lowest
+            </option>
+
+        </select>
+
+
+
+        <!-- STATUS -->
+
+        <div
+            id="contactFormStatus"
+            class="contact-form-status">
+        </div>
+
+
+
+        <!-- SAVE -->
+
+        <button
+            type="button"
+            id="contactSaveButton"
+            class="save-contact-button"
+            onclick="saveContactFromSheet()">
+
+            ✓ Add Contact
+
+        </button>
+
+
+        <!-- CANCEL EDIT -->
+
+        <button
+            type="button"
+            id="cancelEditButton"
+            class="cancel-contact-button"
+            onclick="closeContactForm()">
+
+            Cancel
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<script src="script.js"></script>
+
+
+<script>
+
+/* =====================================================
+   OPEN CONTACT FORM
+===================================================== */
+
+function openContactForm() {
+
+    const overlay =
+        document.getElementById(
+            "contactFormOverlay"
+        );
+
+    const title =
+        document.getElementById(
+            "contactFormTitle"
+        );
+
+    const saveButton =
+        document.getElementById(
+            "contactSaveButton"
+        );
+
+
+    /* Reset form */
+
+    document.getElementById(
+        "contactId"
+    ).value = "";
+
+
+    document.getElementById(
+        "contactName"
+    ).value = "";
+
+
+    document.getElementById(
+        "contactNumber"
+    ).value = "";
+
+
+    document.getElementById(
+        "contactEmail"
+    ).value = "";
+
+
+    document.getElementById(
+        "relationship"
+    ).value = "";
+
+
+    document.getElementById(
+        "groupName"
+    ).value = "";
+
+
+    document.getElementById(
+        "priority"
+    ).value = "1";
+
+
+    if (title) {
+
+        title.innerText =
+            "Add Contact";
+
+    }
+
+
+    if (saveButton) {
+
+        saveButton.innerText =
+            "✓ Add Contact";
+
+    }
+
+
+    if (overlay) {
+
+        overlay.classList.add("show");
+
+    }
+
+}
+
+
+/* =====================================================
+   CLOSE CONTACT FORM
+===================================================== */
+
+function closeContactForm() {
+
+    const overlay =
+        document.getElementById(
+            "contactFormOverlay"
+        );
+
+    if (overlay) {
+
+        overlay.classList.remove("show");
+
+    }
+
+}
+
+
+/* =====================================================
+   SAVE CONTACT
+===================================================== */
+
+async function saveContactFromSheet() {
+
+    const name =
+        document.getElementById(
+            "contactName"
+        ).value.trim();
+
+
+    const number =
+        document.getElementById(
+            "contactNumber"
+        ).value.trim();
+
+
+    if (!name) {
+
+        alert(
+            "Please enter the contact name."
+        );
+
+        return;
+
+    }
+
+
+    if (!number) {
+
+        alert(
+            "Please enter the contact number."
+        );
+
+        return;
+
+    }
+
+
+    /*
+       Your existing function handles
+       the actual backend operation.
+    */
+
+    try {
+
+        await addEmergencyContact();
+
+
+        closeContactForm();
+
+
+        /*
+           Refresh the list after adding.
+        */
+
+        if (
+            typeof loadEmergencyContacts ===
+            "function"
+        ) {
+
+            loadEmergencyContacts();
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Contact save error:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   LOAD CONTACTS
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        if (
+            typeof loadEmergencyContacts ===
+            "function"
+        ) {
+
+            loadEmergencyContacts();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   CLOSE WHEN TAPPING OUTSIDE
+===================================================== */
+
+document
+    .getElementById("contactFormOverlay")
+    .addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target === this
+            ) {
+
+                closeContactForm();
+
+            }
+
+        }
+    );
+
+</script>
+
+</body>
+
+</html>

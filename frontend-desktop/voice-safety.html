@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>SheSafe - Voice SOS</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="voice.css">
+
+    <link rel="stylesheet" href="desktop.css">
+
+</head>
+
+
+<body>
+
+<div class="shesafe-tools-page">
+
+
+    <header class="shesafe-page-header">
+
+        <button
+            onclick="window.location.href='safety-tools.html'">
+
+            ←
+
+        </button>
+
+        <div>
+
+            <h1>
+                Voice SOS
+            </h1>
+
+            <p>
+                Voice-activated emergency protection
+            </p>
+
+        </div>
+
+    </header>
+
+
+
+    <section class="voice-mobile-card">
+
+        <div class="voice-mobile-title">
+
+            <div class="voice-big-icon">
+                🎙️
+            </div>
+
+            <div>
+
+                <h2>
+                    AI Voice Protection
+                </h2>
+
+                <p>
+                    Your voice can activate emergency
+                    protection when you need help.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="voice-mobile-status">
+
+            <span
+                id="voiceStatusBadge">
+
+                OFF
+
+            </span>
+
+            <p>
+                Voice protection status
+            </p>
+
+        </div>
+
+
+
+        <div class="voice-mobile-section">
+
+            <h3>
+                🚨 Emergency Phrases
+            </h3>
+
+            <div class="voice-phrase-grid">
+
+                <span>
+                    “Help me”
+                </span>
+
+                <span>
+                    “Save me”
+                </span>
+
+                <span>
+                    “Emergency”
+                </span>
+
+                <span>
+                    “Call Police”
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+    
+
+
+
+        <div class="voice-mobile-actions">
+
+            <button
+                id="startVoiceRecognition"
+                class="voice-start-button"
+                onclick="startVoiceRecognition()">
+
+                🎙️ Enable Voice Safety
+
+            </button>
+
+
+            <button
+                id="stopVoiceRecognition"
+                class="voice-stop-button"
+                onclick="stopVoiceRecognition()">
+
+                ⏹ Stop Voice Safety
+
+            </button>
+
+        </div>
+
+
+
+        <div class="voice-mobile-transcript">
+
+            <h3>
+                📝 Voice Detection
+            </h3>
+
+            <div id="voiceTranscript">
+
+                Voice protection is OFF.
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="voiceEmergencyMessage"
+            class="voice-emergency-message">
+
+        </div>
+
+    </section>
+
+
+
+    <nav class="mobile-bottom-nav">
+
+        <button onclick="window.location.href='home.html'">
+
+            <span>⌂</span>
+
+            <small>
+                Home
+            </small>
+
+        </button>
+
+
+        <button onclick="window.location.href='safety-tools.html'"
+            >
+
+            <span>🛡️</span>
+
+            <small>
+                Safety
+            </small>
+
+        </button>
+
+
+        <button
+            onclick="openProfile()">
+
+            <span>●</span>
+
+            <small>
+                Profile
+            </small>
+
+        </button>
+
+    </nav>
+    
+
+</div>
+
+<script src="script.js"></script>
+<script src="voiceRecognition.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Incident Timeline - SheSafe</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+    <!-- Leaflet Map -->
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+    <style>
+
+        /* =========================================
+           INCIDENT TIMELINE
+        ========================================= */
+
+        .incident-container {
+            max-width: 1000px;
+            margin: 30px auto;
+        }
+
+        .incident-summary {
+            background: #f5f0ff;
+            border: 1px solid #ddd0ff;
+            border-radius: 16px;
+            padding: 22px;
+            margin-bottom: 25px;
+        }
+
+        .incident-summary h2 {
+            margin-top: 0;
+            color: #6d28d9;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .summary-item {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+        }
+
+        .summary-item strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        /* =========================================
+           FILTERS
+        ========================================= */
+
+        .timeline-controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .timeline-controls button {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        /* =========================================
+           TIMELINE
+        ========================================= */
+
+        .timeline {
+            position: relative;
+            padding-left: 35px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #d8c4ff;
+        }
+
+        .timeline-event {
+            position: relative;
+            background: white;
+            border: 1px solid #ddd0ff;
+            border-radius: 14px;
+            padding: 18px;
+            margin-bottom: 18px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .timeline-event::before {
+            content: "";
+            position: absolute;
+            left: -32px;
+            top: 22px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #7c3aed;
+            border: 3px solid white;
+        }
+
+        .event-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .event-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #4c1d95;
+        }
+
+        .event-time {
+            color: #666;
+            font-size: 13px;
+        }
+
+        .event-description {
+            margin-top: 10px;
+            color: #444;
+        }
+
+        .event-map {
+            height: 250px;
+            margin-top: 15px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .event-button {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 9px 14px;
+            background: #7c3aed;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        .empty-message {
+            background: #f8f5ff;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media(max-width:600px) {
+
+            .timeline {
+                padding-left: 25px;
+            }
+
+            .timeline::before {
+                left: 6px;
+            }
+
+            .timeline-event::before {
+                left: -27px;
+            }
+
+        }
+
+    </style>
+
+    <link rel="stylesheet" href="desktop.css">
+
+</head>
+
+
+<body>
+
+<div class="dashboard">
+
+
+    <!-- =========================================
+         HEADER
+    ========================================= -->
+
+    <header class="dashboard-header">
+
+        <div>
+
+            <h1>📋 Incident Timeline</h1>
+
+            <p>
+                Complete emergency activity history
+            </p>
+
+        </div>
+
+
+        <button
+            onclick="window.location.href='home.html'">
+
+            Back
+
+        </button>
+
+    </header>
+
+
+    <div class="incident-container">
+
+
+        <!-- =====================================
+             INCIDENT SUMMARY
+        ====================================== -->
+
+        
+
+
+        <!-- =====================================
+             FILTERS
+        ====================================== -->
+<div class="timeline-controls">
+
+    <button
+        type="button"
+        class="timeline-filter active"
+        data-filter-type="ALL"
+        onclick="filterIncidentTimeline('ALL')">
+        All
+    </button>
+
+    <button
+        type="button"
+        class="timeline-filter"
+        data-filter-type="LOCATION"
+        onclick="filterIncidentTimeline('LOCATION')">
+        📍 GPS
+    </button>
+
+    <button
+        type="button"
+        class="timeline-filter"
+        data-filter-type="CALL"
+        onclick="filterIncidentTimeline('CALL')">
+        📞 Calls
+    </button>
+
+    <button
+        type="button"
+        class="timeline-filter"
+        data-filter-type="MESSAGE"
+        onclick="filterIncidentTimeline('MESSAGE')">
+        💬 Messages
+    </button>
+
+    <button
+        type="button"
+        class="timeline-filter"
+        data-filter-type="MEDIA"
+        onclick="filterIncidentTimeline('MEDIA')">
+        🎙️ Recordings
+    </button>
+
+</div>
+
+        <!-- =====================================
+             TIMELINE
+        ====================================== -->
+
+        <div class="feature-page">
+
+            <h2>
+                🕒 Activity
+            </h2>
+
+
+            <div
+                id="incidentTimeline"
+                class="timeline">
+
+                <div class="empty-message">
+
+                    Loading incident...
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+
+
+<script src="script.js"></script>
+
+
+<script>
+    document.addEventListener(
+        "DOMContentLoaded",
+        function() {
+            loadDatabaseIncidentTimeline();
+        }
+    );
+</script>
+
+
+</body>
+
+</html>

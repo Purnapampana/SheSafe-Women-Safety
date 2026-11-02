@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AI Assistant - SheSafe</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+    <link rel="stylesheet" href="desktop.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- HEADER -->
+
+    <header class="dashboard-header">
+
+        <div>
+
+            <h1>🤖 AI Safety Assistant</h1>
+
+            <p>
+                Get safety guidance and emergency assistance
+            </p>
+
+        </div>
+
+        <button
+            onclick="window.location.href='index.html'">
+
+            Back
+
+        </button>
+
+    </header>
+
+
+    <!-- CHATBOT -->
+
+    <div class="feature-page">
+
+        <h2>💬 SheSafe Assistant</h2>
+
+        <p>
+            Ask me about safety, emergencies,
+            first aid, nearby services or legal help.
+        </p>
+
+
+        <!-- CHAT MESSAGES -->
+
+        <div
+            id="chatMessages"
+            style="
+                height: 400px;
+                overflow-y: auto;
+                border: 1px solid #ddd;
+                border-radius: 12px;
+                padding: 20px;
+                margin-bottom: 20px;
+                background: #fafafa;
+            ">
+
+            <div
+                style="
+                    background: #eee7ff;
+                    padding: 12px;
+                    border-radius: 10px;
+                    margin-bottom: 10px;
+                ">
+
+                🤖 <strong>SheSafe Assistant:</strong>
+
+                <br>
+
+                Hello! I am your safety assistant.
+                How can I help you?
+
+            </div>
+
+        </div>
+
+
+        <!-- QUICK OPTIONS -->
+
+        <h3>Quick Help</h3>
+
+        <div class="actions">
+
+            <button
+                onclick="askAI('I need safety guidance')">
+
+                🛡️ Safety Guidance
+
+            </button>
+
+
+            <button
+                onclick="askAI('What should I do during an emergency?')">
+
+                🚨 Emergency Instructions
+
+            </button>
+
+
+            <button
+                onclick="askAI('I need first aid information')">
+
+                🩹 First Aid
+
+            </button>
+
+
+            <button
+                onclick="findNearbyPolice()">
+
+                🚔 Nearby Police
+
+            </button>
+
+
+            <button
+                onclick="findNearbyHospitals()">
+
+                🏥 Nearby Hospitals
+
+            </button>
+
+
+            <button
+                onclick="askAI('I need legal assistance information')">
+
+                ⚖️ Legal Assistance
+
+            </button>
+
+        </div>
+
+
+        <!-- USER MESSAGE -->
+
+        <div
+            style="
+                display:flex;
+                gap:10px;
+                margin-top:20px;
+            ">
+
+            <input
+                type="text"
+                id="aiMessage"
+                placeholder="Type your question..."
+                onkeydown="handleAIEnter(event)">
+
+
+            <button
+                onclick="sendAIMessage()">
+
+                Send
+
+            </button>
+
+        </div>
+
+
+        <!-- LOCATION STATUS -->
+
+        <div
+            id="aiLocationStatus"
+            class="status-box"
+            style="margin-top:20px;">
+
+            📍 Location services are available
+            for nearby police and hospitals.
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

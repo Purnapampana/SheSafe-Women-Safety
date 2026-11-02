@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SheSafe - Safe Route</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="safe-route.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+    <link rel="stylesheet" href="desktop.css">
+
+</head>
+
+
+<body>
+
+
+
+    <!-- =================================================
+         PAGE HEADER
+    ================================================== -->
+
+  <div class="safe-route-form-card">
+
+    <div class="safe-route-card-header">
+
+        <h1>
+            🛡️ Safe Route Recommendation
+        </h1>
+
+        <button
+            type="button"
+            class="safe-route-back-button"
+            onclick="window.location.href='home.html'"
+        >
+            ← Back
+        </button>
+
+    </div>
+
+    <p class="safe-route-subtitle">
+        Find a safer route to your destination
+    </p>
+
+
+    <!-- START LOCATION -->
+
+    <div class="form-group">
+
+        <label>
+            📍 Starting Location
+        </label>
+
+        <div class="input-row">
+
+            <input
+                type="text"
+                id="startAddress"
+                placeholder="Use current location or enter starting location"
+                oninput="clearCurrentLocationWhenTyping()"
+            >
+
+            <h2>OR</h2>
+
+            <button
+                type="button"
+                onclick="getSafeRouteLocation()"
+            >
+                📍 Current Location
+            </button>
+
+        </div>
+
+        <div id="routeLocationStatus"></div>
+
+    </div>
+
+
+    <!-- DESTINATION -->
+
+    <div class="form-group">
+
+        <label>
+            🎯 Destination
+        </label>
+
+        <input
+            type="text"
+            id="destination"
+            placeholder="Enter destination"
+        >
+
+    </div>
+
+
+    <!-- FIND ROUTE -->
+
+    <button
+        type="button"
+        class="find-route-button"
+        onclick="findSafeRoute()"
+    >
+        🛡️ Find Safe Route
+    </button>
+
+
+    <div
+        id="safeRouteStatus"
+        class="safe-route-status"
+    ></div>
+
+</div>
+
+<div class="container safe-route-container">
+    <!-- =================================================
+         MAP
+    ================================================== -->
+
+    <div
+        id="safeRouteMapSection"
+        class="safe-route-map-section"
+    >
+
+        <div class="safe-route-map-header">
+            🗺️ Safe Route Map
+        </div>
+
+
+        <div class="safe-route-map-wrapper">
+
+            <div
+                id="safeRouteMap"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         ROUTES
+    ================================================== -->
+
+    <div
+        id="safeRouteResult"
+        class="safe-route-results"
+    ></div>
+
+
+</div>
+
+
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+></script>
+
+
+<script
+    src="script.js?v=20260914"
+></script>
+
+
+<script
+    src="safe-route.js"
+></script>
+
+
+</body>
+
+</html>

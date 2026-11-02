@@ -1,0 +1,938 @@
+/* =====================================================
+   SHESAFE SAFE ROUTE - PICTURE STYLE
+   DESIGN ONLY
+===================================================== */
+
+
+/* =====================================================
+   PAGE BACKGROUND
+===================================================== */
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            135deg,
+            #3b176d 0%,
+            #241044 45%,
+            #0f0a18 100%
+        );
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+
+.safe-route-container {
+    width: 100%;
+    max-width: 1240px;
+ margin-top: 30px;
+    margin: 28px auto 50px auto;
+
+    padding: 0 20px;
+
+    box-sizing: border-box;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.safe-route-page-header {
+
+    width: 100%;
+
+    min-height: 105px;
+
+    padding: 20px 25px;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.16);
+}
+
+
+/* =====================================================
+   HEADER CONTENT
+===================================================== */
+
+.safe-route-header-content {
+
+    flex: 1;
+
+    min-width: 0;
+
+    text-align: left;
+}
+
+
+.safe-route-header-content h1 {
+
+    margin: 0;
+
+    color: #6d28d9;
+
+    font-size: 29px;
+
+    font-weight: 800;
+
+    line-height: 1.2;
+
+    text-align: left;
+}
+
+
+.safe-route-header-content p {
+
+    margin: 7px 0 0 0;
+
+    color: #666666;
+
+    font-size: 14px;
+
+    line-height: 1.4;
+
+    text-align: left;
+}
+
+
+/* =====================================================
+   BACK BUTTON
+===================================================== */
+
+.safe-route-back-button {
+
+    flex: 0 0 110px;
+
+    width: 110px;
+
+    min-width: 110px;
+
+    height: 38px;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #9333ea
+        );
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    text-align: center;
+
+    box-sizing: border-box;
+}
+
+
+/* =====================================================
+   FORM CARD
+===================================================== */
+
+.safe-route-form-card {
+
+    width: 100%;
+    max-width: 900px;
+margin-top: 30px !important;
+    margin: 0 auto 25px auto;
+
+    padding: 28px 40px 32px 40px;
+
+    box-sizing: border-box;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.16);
+}
+.safe-route-card-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    width: 100%;
+
+    margin-bottom: 4px;
+}
+
+
+.safe-route-card-header h1 {
+
+    margin: 0;
+
+    color: #6d28d9;
+
+    font-size: 29px;
+
+    font-weight: 800;
+
+    line-height: 1.2;
+
+    text-align: left;
+}
+.safe-route-subtitle {
+
+    margin: 5px 0 25px 0;
+
+    color: #666666;
+
+    font-size: 14px;
+
+    line-height: 1.4;
+
+    text-align: left;
+}
+
+
+/* =====================================================
+   FORM GROUP
+===================================================== */
+
+.safe-route-form-card .form-group {
+
+    width: 100%;
+
+    margin-bottom: 20px;
+
+    text-align: left;
+}
+
+
+/* =====================================================
+   LABEL
+===================================================== */
+
+.safe-route-form-card label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #111827;
+
+    font-size: 15px;
+
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   START LOCATION ROW
+===================================================== */
+
+.input-row {
+
+    display: flex;
+
+    align-items: center;
+
+    width: 100%;
+
+    gap: 10px;
+
+    box-sizing: border-box;
+}
+
+
+/* =====================================================
+   INPUT
+===================================================== */
+
+.safe-route-form-card input {
+
+    width: 100%;
+
+    height: 51px;
+
+    padding: 0 15px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #d6d6d6;
+
+    border-radius: 11px;
+
+    background: #ffffff;
+
+    color: #111827;
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+
+.safe-route-form-card input:focus {
+
+    border-color: #7c3aed;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(124, 58, 237, 0.12);
+}
+
+
+/* =====================================================
+   OR TEXT
+===================================================== */
+
+.input-row h2 {
+
+    flex: 0 0 auto;
+
+    margin: 0;
+
+    padding: 0;
+
+    color: #111827;
+
+    font-size: 18px;
+
+    font-weight: 800;
+
+    line-height: 51px;
+}
+
+
+/* =====================================================
+   CURRENT LOCATION BUTTON
+===================================================== */
+
+.input-row button {
+
+    flex: 0 0 135px;
+
+    width: 135px;
+
+    min-width: 135px;
+
+    height: 51px;
+
+    padding: 0 12px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background: #7c3aed;
+
+    color: #ffffff;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    box-sizing: border-box;
+}
+
+
+/* =====================================================
+   LOCATION STATUS
+===================================================== */
+
+#routeLocationStatus {
+
+    margin-top: 7px;
+
+    font-size: 13px;
+
+    color: #444444;
+}
+
+
+/* =====================================================
+   FIND SAFE ROUTE
+===================================================== */
+
+.find-route-button {
+
+    width: 100%;
+
+    height: 52px;
+
+    margin-top: 5px;
+
+    padding: 0 20px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #9333ea
+        );
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-sizing: border-box;
+}
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.safe-route-status {
+
+    margin-top: 12px;
+
+    color: #444444;
+
+    font-size: 14px;
+
+    text-align: center;
+}
+
+
+/* =====================================================
+   MAP CARD
+===================================================== */
+
+.safe-route-map-section {
+
+    width: 100%;
+
+    height: 580px;
+
+    margin-top: 20px;
+
+    padding: 10px;
+
+    box-sizing: border-box;
+
+    background: #ffffff;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.16);
+
+    position: relative;
+
+    overflow: visible;
+}
+
+
+/* =====================================================
+   MAP TITLE
+===================================================== */
+
+.safe-route-map-header {
+
+    width: 100%;
+
+    height: 40px;
+
+    padding: 8px 5px;
+
+    box-sizing: border-box;
+
+    color: #111827;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    text-align: center;
+
+    line-height: 24px;
+}
+
+
+/* =====================================================
+   MAP
+===================================================== */
+
+.safe-route-map-wrapper {
+
+    width: 100%;
+
+    height: 510px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+#safeRouteMap,
+#safeRouteMap.leaflet-container {
+
+    width: 100% !important;
+
+    height: 510px !important;
+
+    min-height: 510px !important;
+
+    border-radius: 12px !important;
+
+    background: #dbeafe !important;
+
+    overflow: hidden !important;
+}
+
+
+/* =====================================================
+   ROUTE RESULTS
+===================================================== */
+
+.safe-route-results {
+
+    width: 100%;
+
+    margin-top: 20px;
+
+    box-sizing: border-box;
+}
+
+
+/* =====================================================
+   ROUTE CARD
+===================================================== */
+
+.route-card {
+
+    width: 100%;
+
+    padding: 18px;
+
+    margin-bottom: 15px;
+
+    box-sizing: border-box;
+
+    background: #ffffff;
+
+    border: 1px solid #dddddd;
+
+    border-radius: 14px;
+
+    cursor: pointer;
+}
+
+
+.route-card.selected {
+
+    border: 3px solid #7c3aed;
+}
+
+
+.route-title {
+
+    color: #111827;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    margin-bottom: 12px;
+}
+
+
+.route-details {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 10px;
+}
+
+
+.route-detail {
+
+    padding: 10px;
+
+    background: #f7f7f7;
+
+    border-radius: 8px;
+
+    text-align: center;
+}
+
+
+/* =====================================================
+   ROUTE BUTTONS
+===================================================== */
+
+.route-actions {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-top: 15px;
+
+    flex-wrap: wrap;
+}
+
+
+.route-button {
+
+    border: none;
+
+    border-radius: 8px;
+
+    padding: 11px 16px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+    flex: 1;
+
+    min-width: 140px;
+}
+
+
+.select-route-button {
+
+    background: #7c3aed;
+
+    color: #ffffff;
+}
+
+
+.navigation-button {
+
+    background: #16a34a;
+
+    color: #ffffff;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .safe-route-container {
+        width: 100%;
+        padding: 0 10px;
+        margin: 15px auto 30px auto;
+        box-sizing: border-box;
+    }
+
+
+    /* =================================================
+       FORM CARD
+    ================================================= */
+
+    .safe-route-form-card {
+        width: 100%;
+        max-width: 100%;
+        padding: 22px 18px 25px 18px;
+        margin: 0 auto 20px auto;
+        box-sizing: border-box;
+        border-radius: 16px;
+    }
+
+
+    /* =================================================
+       HEADER
+    ================================================= */
+
+    .safe-route-card-header {
+        width: 100%;
+        gap: 12px;
+        align-items: flex-start;
+    }
+
+    .safe-route-card-header h1 {
+        font-size: 23px;
+        line-height: 1.25;
+    }
+
+
+    /* =================================================
+       BACK BUTTON
+    ================================================= */
+
+    .safe-route-back-button {
+        flex: 0 0 auto;
+        width: 85px;
+        min-width: 85px;
+        max-width: 85px;
+        height: 38px;
+        padding: 0;
+        font-size: 13px;
+    }
+
+
+    /* =================================================
+       SUBTITLE
+    ================================================= */
+
+    .safe-route-subtitle {
+        margin: 5px 0 22px 0;
+        font-size: 13px;
+    }
+
+
+    /* =================================================
+       FORM GROUP
+    ================================================= */
+
+    .safe-route-form-card .form-group {
+        width: 100%;
+        margin-bottom: 18px;
+    }
+
+
+    /* =================================================
+       LABEL
+    ================================================= */
+
+    .safe-route-form-card label {
+        font-size: 14px;
+        margin-bottom: 7px;
+    }
+
+
+    /* =================================================
+       START LOCATION
+    ================================================= */
+
+    .input-row {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+
+    /* =================================================
+       INPUT
+    ================================================= */
+
+    .safe-route-form-card input {
+        width: 100%;
+        height: 50px;
+        padding: 0 13px;
+        font-size: 14px;
+        box-sizing: border-box;
+    }
+
+
+    /* =================================================
+       OR
+    ================================================= */
+
+    .input-row h2 {
+        width: 100%;
+        margin: 2px 0;
+        padding: 0;
+        text-align: center;
+        font-size: 15px;
+        line-height: normal;
+    }
+
+
+    /* =================================================
+       CURRENT LOCATION BUTTON
+    ================================================= */
+
+    .input-row button {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        height: 50px;
+        flex: none;
+        padding: 0 12px;
+        font-size: 13px;
+        box-sizing: border-box;
+    }
+
+
+    /* =================================================
+       FIND SAFE ROUTE BUTTON
+    ================================================= */
+
+    .find-route-button {
+        width: 100%;
+        height: 50px;
+        margin-top: 3px;
+        font-size: 15px;
+    }
+
+
+    /* =================================================
+       STATUS
+    ================================================= */
+
+    .safe-route-status {
+        font-size: 13px;
+    }
+
+
+    /* =================================================
+       MAP CARD
+    ================================================= */
+
+    .safe-route-map-section {
+        width: 100%;
+        height: 470px;
+        margin-top: 15px;
+        padding: 8px;
+        border-radius: 15px;
+        box-sizing: border-box;
+    }
+
+
+    /* =================================================
+       MAP TITLE
+    ================================================= */
+
+    .safe-route-map-header {
+        height: 38px;
+        padding: 7px 3px;
+        font-size: 17px;
+        line-height: 24px;
+    }
+
+
+    /* =================================================
+       MAP WRAPPER
+    ================================================= */
+
+    .safe-route-map-wrapper {
+        width: 100%;
+        height: 410px;
+        position: relative;
+        overflow: hidden;
+    }
+
+
+    /* =================================================
+       MAP
+    ================================================= */
+
+    #safeRouteMap,
+    #safeRouteMap.leaflet-container {
+        width: 100% !important;
+        height: 410px !important;
+        min-height: 410px !important;
+        border-radius: 10px !important;
+    }
+
+
+    /* =================================================
+       ROUTE RESULTS
+    ================================================= */
+
+    .safe-route-results {
+        width: 100%;
+        margin-top: 15px;
+    }
+
+
+    /* =================================================
+       ROUTE CARD
+    ================================================= */
+
+    .route-card {
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 12px;
+        box-sizing: border-box;
+    }
+
+
+    .route-title {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+
+    /* =================================================
+       ROUTE DETAILS
+    ================================================= */
+
+    .route-details {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+
+    .route-detail {
+        padding: 9px;
+    }
+
+
+    /* =================================================
+       ROUTE BUTTONS
+    ================================================= */
+
+    .route-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+
+    .route-button {
+        width: 100%;
+        min-width: 100%;
+        flex: none;
+        box-sizing: border-box;
+    }
+
+}

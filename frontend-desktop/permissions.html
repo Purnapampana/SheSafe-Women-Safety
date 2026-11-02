@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SheSafe - Permissions</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="desktop.css">
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background:
+                radial-gradient(circle at top, #21113b 0%, #120d18 55%);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .permission-container {
+            width: 90%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.97);
+            color: #222;
+            padding: 35px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+        }
+
+        .permission-container h1 {
+            text-align: center;
+            color: #6d28d9;
+            margin-bottom: 8px;
+        }
+
+        .permission-container .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .permission-box {
+            border: 2px solid #eee;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .permission-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .permission-icon {
+            font-size: 35px;
+        }
+
+        .permission-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #4c1d95;
+        }
+
+        .permission-description {
+            color: #666;
+            line-height: 1.5;
+            margin: 12px 0 18px;
+        }
+
+        .permission-button {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 10px;
+            background: #7c3aed;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .permission-button:hover {
+            background: #6d28d9;
+        }
+
+        .permission-button:disabled {
+            background: #aaa;
+            cursor: not-allowed;
+        }
+
+        .status {
+            margin-top: 12px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .status.granted {
+            color: #16a34a;
+        }
+
+        .status.denied {
+            color: #dc2626;
+        }
+
+        .status.pending {
+            color: #d97706;
+        }
+
+        .continue-button {
+            width: 100%;
+            padding: 15px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 12px;
+            background: #9333ea;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .continue-button:disabled {
+            background: #bbb;
+            cursor: not-allowed;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 15px;
+            color: #dc2626;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="permission-container">
+
+    <h1>🛡 SheSafe</h1>
+
+    <p class="subtitle">
+        Allow these permissions once so SheSafe can protect you during emergencies.
+    </p>
+
+
+    <!-- LOCATION -->
+    <div class="permission-box">
+
+        <div class="permission-header">
+
+            <div class="permission-icon">
+                📍
+            </div>
+
+            <div class="permission-title">
+                Location Access
+            </div>
+
+        </div>
+
+        <p class="permission-description">
+            SheSafe uses your location during an emergency to help
+            identify your location and provide safety services.
+        </p>
+
+        <button
+            id="locationButton"
+            class="permission-button"
+            onclick="requestLocationPermission()">
+            Allow Location
+        </button>
+
+        <div
+            id="locationStatus"
+            class="status pending">
+            Checking permission...
+        </div>
+
+    </div>
+
+
+    <!-- CAMERA + MICROPHONE -->
+    <div class="permission-box">
+
+        <div class="permission-header">
+
+            <div class="permission-icon">
+                🎥
+            </div>
+
+            <div class="permission-title">
+                Camera & Microphone
+            </div>
+
+        </div>
+
+        <p class="permission-description">
+            SheSafe may use your camera and microphone during an emergency
+            to record evidence and help protect you.
+        </p>
+
+        <button
+            id="mediaButton"
+            class="permission-button"
+            onclick="requestMediaPermission()">
+            Allow Camera & Microphone
+        </button>
+
+        <div
+            id="mediaStatus"
+            class="status pending">
+            Checking permission...
+        </div>
+
+    </div>
+
+
+    <button
+        id="continueButton"
+        class="continue-button"
+        onclick="continueAfterPermissions()"
+        disabled>
+        Continue
+    </button>
+
+    <div id="permissionMessage" class="message"></div>
+
+</div>
+
+
+<script>
+
+const BASE_URL =
+    "https://shesafe-backend-api.onrender.com";
+
+
+
+const STORAGE_KEY = "sheSafePermissionsCompleted";
+
+let locationGranted = false;
+let mediaGranted = false;
+
+// PAGE LOAD
+document.addEventListener("DOMContentLoaded", () => {
+    // Restore the previous successful permission setup.
+    const completed = localStorage.getItem(STORAGE_KEY) === "true";
+
+    if (completed) {
+        locationGranted = true;
+        mediaGranted = true;
+
+        setStatus(
+            "locationStatus",
+            "✓ Location permission previously granted",
+            "granted"
+        );
+
+        setStatus(
+            "mediaStatus",
+            "✓ Camera & microphone previously granted",
+            "granted"
+        );
+
+        document.getElementById("locationButton").textContent =
+            "✓ Location Allowed";
+
+        document.getElementById("mediaButton").textContent =
+            "✓ Camera & Microphone Allowed";
+    } else {
+        setStatus(
+            "locationStatus",
+            "Please allow location permission",
+            "pending"
+        );
+
+        setStatus(
+            "mediaStatus",
+            "Camera & microphone permission required",
+            "pending"
+        );
+    }
+
+    updateContinueButton();
+});
+
+// LOCATION PERMISSION
+async function requestLocationPermission() {
+    const button = document.getElementById("locationButton");
+
+    if (!navigator.geolocation) {
+        setStatus(
+            "locationStatus",
+            "Location is not supported on this device",
+            "denied"
+        );
+        return;
+    }
+
+    button.disabled = true;
+
+    setStatus(
+        "locationStatus",
+        "Requesting location permission...",
+        "pending"
+    );
+
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            console.log("Location granted");
+            console.log("Latitude:", position.coords.latitude);
+            console.log("Longitude:", position.coords.longitude);
+
+            locationGranted = true;
+
+            setStatus(
+                "locationStatus",
+                "✓ Location permission granted",
+                "granted"
+            );
+
+            button.textContent = "✓ Location Allowed";
+            button.disabled = false;
+
+            updateContinueButton();
+        },
+        (error) => {
+            console.error("Location error:", error);
+
+            locationGranted = false;
+
+            setStatus(
+                "locationStatus",
+                error.code === 1
+                    ? "Location permission denied. Check app settings."
+                    : "Unable to get location. Please try again.",
+                "denied"
+            );
+
+            button.disabled = false;
+            updateContinueButton();
+        },
+        {
+            enableHighAccuracy: true,
+            timeout: 15000,
+            maximumAge: 0
+        }
+    );
+}
+
+// CAMERA AND MICROPHONE PERMISSION
+async function requestMediaPermission() {
+    const button = document.getElementById("mediaButton");
+
+    if (
+        !navigator.mediaDevices ||
+        !navigator.mediaDevices.getUserMedia
+    ) {
+        setStatus(
+            "mediaStatus",
+            "Camera/microphone is unavailable in this app",
+            "denied"
+        );
+        return;
+    }
+
+    button.disabled = true;
+
+    setStatus(
+        "mediaStatus",
+        "Requesting camera and microphone permission...",
+        "pending"
+    );
+
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+            video: true,
+            audio: true
+        });
+
+        // Both permissions were successfully granted.
+        mediaGranted = true;
+
+        // Stop the devices after permission verification.
+        stream.getTracks().forEach(track => track.stop());
+
+        setStatus(
+            "mediaStatus",
+            "✓ Camera & microphone permission granted",
+            "granted"
+        );
+
+        button.textContent = "✓ Camera & Microphone Allowed";
+
+    } catch (error) {
+        console.error("Media permission error:", error);
+
+        mediaGranted = false;
+
+        setStatus(
+            "mediaStatus",
+            "Permission failed: " + error.message,
+            "denied"
+        );
+
+        button.textContent = "Allow Camera & Microphone";
+    }
+
+    button.disabled = false;
+    updateContinueButton();
+}
+
+// STATUS HELPER
+function setStatus(elementId, message, type) {
+    const element = document.getElementById(elementId);
+
+    element.textContent = message;
+    element.className = "status " + type;
+}
+
+// UPDATE CONTINUE BUTTON
+function updateContinueButton() {
+    const continueButton =
+        document.getElementById("continueButton");
+
+    if (locationGranted && mediaGranted) {
+        continueButton.disabled = false;
+        continueButton.textContent = "Continue to SheSafe";
+    } else {
+        continueButton.disabled = true;
+        continueButton.textContent = "Allow Required Permissions";
+    }
+}
+
+// CONTINUE
+function continueAfterPermissions() {
+    if (!locationGranted || !mediaGranted) {
+        document.getElementById("permissionMessage").textContent =
+            "Please allow Location, Camera and Microphone before continuing.";
+
+        return;
+    }
+
+    localStorage.setItem(STORAGE_KEY, "true");
+
+    window.location.href = "home.html";
+}
+
+
+</script>
+
+</body>
+</html>

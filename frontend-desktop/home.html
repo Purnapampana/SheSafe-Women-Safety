@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>SheSafe - Home</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="voice.css">
+
+    <link rel="stylesheet" href="desktop.css">
+
+</head>
+
+
+<body>
+
+<div class="shesafe-home">
+
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header class="mobile-home-header">
+
+        <div class="mobile-brand">
+
+            <div class="mobile-brand-icon">
+                🛡️
+            </div>
+
+            <div>
+
+                <h1>SheSafe</h1>
+
+                <p>
+                    Your personal safety companion
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="mobile-header-buttons">
+
+            <button
+                onclick="openProfile()"
+                class="mobile-profile-btn">
+
+                👤
+
+            </button>
+
+            <button
+                onclick="logout()"
+                class="mobile-logout-btn">
+
+                ↪
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         WELCOME
+    ========================================== -->
+
+    <section class="mobile-welcome-card">
+
+        <span class="mobile-welcome-label">
+            YOUR SAFETY
+        </span>
+
+        <h2>
+            Welcome 👋
+        </h2>
+
+        <p>
+            You're protected with SheSafe.
+            Stay safe, stay connected and get help
+            whenever you need it.
+        </p>
+
+
+        <div class="mobile-status">
+
+            <span class="mobile-status-dot"></span>
+
+            <div>
+
+                <strong>
+                    Safety Status
+                </strong>
+
+                <small>
+                    You're currently protected
+                </small>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         SOS
+    ========================================== -->
+
+    <!-- ================= SOS EMERGENCY ================= -->
+
+<section class="home-sos-card">
+
+    <div class="home-sos-header">
+
+        <span class="home-sos-label">
+            EMERGENCY ASSISTANCE
+        </span>
+
+        <h2>
+            Need immediate help?
+        </h2>
+
+        <p>
+            Press the SOS button to start your emergency response.
+        </p>
+
+    </div>
+
+    <div class="home-sos-action">
+
+        <button
+            type="button"
+            class="home-sos-button"
+            onclick="activateSmartSOS('ONE-TOUCH')">
+
+            SOS
+
+        </button>
+
+    </div>
+
+    <p class="home-sos-note">
+        Your emergency contacts and location can be notified.
+    </p>
+
+    <!-- SOS STATUS -->
+
+    <div
+        id="sosStatus"
+        class="home-sos-status">
+
+        No emergency activated.
+
+    </div>
+
+    <!-- STOP RECORDING -->
+
+    <button
+        type="button"
+        class="home-stop-recording"
+        onclick="stopSOSRecording()">
+
+        ⛔ Stop Recording
+
+    </button>
+
+</section>
+
+<!-- VOICE SOS: INLINE VOICE ACTIVATION -->
+
+<section class="smart-sos-settings voice-home-card">
+
+    <h3>🎙️ Voice SOS</h3>
+
+    <p>
+        Your voice can activate emergency protection
+        when you need help.
+    </p>
+
+    <div id="voiceStatusBadge">
+        OFF
+    </div>
+
+    <h4>🚨 Emergency Phrases</h4>
+
+    <div class="voice-phrase-grid">
+        <span>Help me</span>
+        <span>Save me</span>
+        <span>Emergency</span>
+        <span>Call Police</span>
+    </div>
+
+    <button
+        type="button"
+        id="startVoiceRecognition"
+        class="voice-start-button"
+        onclick="startVoiceRecognition()">
+        🎙️ Enable Voice Safety
+    </button>
+
+    <button
+        type="button"
+        id="stopVoiceRecognition"
+        class="voice-stop-button"
+        onclick="stopVoiceRecognition()">
+        ⏹ Stop Voice Safety
+    </button>
+
+    <div
+        id="voiceEmergencyMessage"
+        class="voice-emergency-message">
+    </div>
+
+</section>
+
+
+    <!-- =========================================
+         QUICK ACTIONS
+    ========================================== -->
+
+    <section class="mobile-quick-section">
+
+        <div class="mobile-section-title">
+
+            <div>
+
+                <h2>
+                    Quick Safety
+                </h2>
+
+                <p>
+                    Important safety tools
+                </p>
+
+            </div>
+
+
+            <button
+                onclick="window.location.href='safety-tools.html'">
+
+                See all
+
+            </button>
+
+        </div>
+
+
+
+        <div class="mobile-quick-grid">
+
+
+            <!-- LOCATION -->
+
+            <button
+                class="mobile-action-card"
+                onclick="openGPS()">
+
+                <div class="mobile-action-icon purple">
+                    📍
+                </div>
+
+                <strong>
+                    Live Location
+                </strong>
+
+                <small>
+                    Share location
+                </small>
+
+            </button>
+
+
+
+            <!-- ROUTE -->
+
+            <button
+                class="mobile-action-card"
+                onclick="window.location.href='safe-route.html'">
+
+                <div class="mobile-action-icon blue">
+                    🗺️
+                </div>
+
+                <strong>
+                    Safe Route
+                </strong>
+
+                <small>
+                    Safer navigation
+                </small>
+
+            </button>
+
+
+
+            <!-- AI -->
+
+            <button
+                class="mobile-action-card"
+                onclick="openChatbot()">
+
+                <div class="mobile-action-icon violet">
+                    🤖
+                </div>
+
+                <strong>
+                    AI Assistant
+                </strong>
+
+                <small>
+                    Safety guidance
+                </small>
+
+            </button>
+
+
+
+            <button
+            class="mobile-action-card"
+            onclick="window.location.href='nearby.html'">
+
+            <div class="mobile-action-icon violet">
+                🏥
+            </div>
+
+            <strong>
+                    Nearby Services
+                </strong>
+
+                <small>
+                    Find hospitals and police stations nearby.
+                </small>
+
+        </button>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         BOTTOM NAV
+    ========================================== -->
+
+    <nav class="mobile-bottom-nav">
+
+        <button class="active">
+
+            <span>⌂</span>
+
+            <small>
+                Home
+            </small>
+
+        </button>
+
+
+        <button
+            onclick="window.location.href='safety-tools.html'">
+
+            <span>🛡️</span>
+
+            <small>
+                Safety
+            </small>
+
+        </button>
+
+
+        <button
+            onclick="openProfile()">
+
+            <span>●</span>
+
+            <small>
+                Profile
+            </small>
+
+        </button>
+
+    </nav>
+
+
+</div>
+
+
+<script src="script.js"></script>
+<script src="voiceRecognition.js"></script>
+
+</body>
+
+</html>

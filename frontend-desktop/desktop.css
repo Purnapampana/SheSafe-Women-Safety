@@ -1,0 +1,214 @@
+/* SheSafe desktop/web layout layer. Loaded AFTER the page's existing stylesheets.
+   Preserves existing HTML, JavaScript, API endpoints and the purple/red brand palette. */
+:root{--ss-bg:#120d18;--ss-panel:#fff;--ss-ink:#21172b;--ss-muted:#766b82;--ss-purple:#7c3aed;--ss-purple-dark:#6d28d9;--ss-border:#eadff7;--ss-shadow:0 16px 42px rgba(0,0,0,.22)}
+*{box-sizing:border-box}
+html{min-width:320px;scroll-behavior:smooth}
+body{min-height:100vh;background:radial-gradient(circle at 8% 5%,rgba(124,58,237,.28),transparent 28%),radial-gradient(circle at 92% 88%,rgba(168,85,247,.14),transparent 28%),#120d18;color:#fff;font-family:Inter,Segoe UI,Arial,sans-serif}
+button,a,input,select,textarea{font:inherit}
+button{cursor:pointer;transition:transform .18s ease,box-shadow .18s ease}
+button:hover{transform:translateY(-1px)}
+input,select,textarea{max-width:100%}
+img,video,canvas,iframe{max-width:100%}
+/* General page width and content rhythm */
+.shesafe-home,.shesafe-tools-page,.feature-page,.contacts-mobile-page,.profile-mobile-page,.evidence-page,.incident-page,.safe-route-container,.admin-container,.permission-container,.sos-container,.container,.login-page{width:min(1440px,calc(100% - 64px));margin-inline:auto}
+.dashboard,.shesafe-home,.feature-page,.contacts-mobile-page,.profile-mobile-page,.evidence-page,.incident-page,.safe-route-container,.admin-container,.permission-container{padding:28px 0 48px}
+/* Shared desktop headers */
+.mobile-home-header,.dashboard-header,.admin-header,.contacts-header,.evidence-header,.incident-header,.profile-header,.profile-mobile-header,.permission-header,.shesafe-page-header{width:100%;max-width:none;margin:0 auto 26px;padding:20px 28px;display:flex;align-items:center;justify-content:space-between;gap:22px;border:1px solid rgba(255,255,255,.55);border-radius:20px;background:rgba(255,255,255,.97);color:#21172b;box-shadow:var(--ss-shadow)}
+.mobile-brand h1,.dashboard-header h1,.admin-header h1,.shesafe-page-header h1{color:var(--ss-purple-dark)}
+.mobile-brand p,.dashboard-header p,.admin-header p{color:var(--ss-muted)}
+.mobile-header-buttons{display:flex;align-items:center;gap:12px}
+/* Welcome and primary content */
+.mobile-welcome-card,.welcome,.home-sos-card,.sos-section,.card,.login-card,.otp-card,.profile-user-card,.contacts-intro,.contacts-list-section,.incident-main-card,.incident-help-card,.incident-upload-card,.incident-location-section,.evidence-page>section,.safe-route-card,.safe-route-form-card,.safe-route-map-section,.admin-section,.admin-stat-card,.admin-chart-card,.admin-response-card,.admin-contact-card,.health-card,.risk-input-card,.risk-result,.permission-box,.voice-mobile-card,.voice-home-card,.shesafe-tool-card{border-radius:20px;box-shadow:0 12px 34px rgba(0,0,0,.16)}
+.mobile-welcome-card,.welcome,.contacts-intro,.profile-user-card,.incident-main-card,.incident-help-card,.incident-upload-card,.incident-location-section,.safe-route-card,.safe-route-form-card,.safe-route-map-section,.admin-section,.admin-stat-card,.admin-chart-card,.admin-response-card,.admin-contact-card,.health-card,.risk-input-card,.risk-result,.permission-box,.voice-mobile-card,.voice-home-card,.shesafe-tool-card{background:linear-gradient(145deg,#fff,#faf7ff);color:#21172b}
+.mobile-welcome-card,.welcome{padding:30px 34px;margin-bottom:24px}
+.mobile-welcome-card h2,.welcome h2,.contacts-section-title,.incident-section-title,.tools-title{color:var(--ss-purple-dark)}
+/* Desktop dashboard: turn compact cards into useful multi-column panels */
+.mobile-quick-grid,.shesafe-tools-grid,.grid,.health-grid,.admin-summary-grid,.admin-analytics-grid,.admin-response-grid,.admin-contact-grid,.incident-upload-grid,.home-sos-action,.voice-phrase-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.mobile-quick-section,.contacts-section,.profile-section,.admin-section,.incident-section,.safe-route-results{margin-top:26px}
+.mobile-action-card,.shesafe-tool-card{min-height:150px;padding:24px;display:flex;align-items:center;gap:18px}
+.mobile-action-icon,.tool-icon{flex:0 0 auto}
+.home-sos-card,.sos-section{margin:26px 0;padding:30px;background:linear-gradient(145deg,#fff,#faf7ff);color:#21172b;text-align:center}
+.home-sos-button,.sos-button{width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,#ef4444,#b91c1c);border:10px solid #fecaca;color:#fff;font-size:34px;font-weight:900;box-shadow:0 0 0 12px rgba(239,68,68,.08),0 15px 40px rgba(220,38,38,.35)}
+.home-sos-action{display:flex;justify-content:center;align-items:center;margin:24px 0}
+/* Forms and authentication */
+.container,.login-card,.otp-card{width:min(540px,100%);margin:48px auto;padding:38px;background:#fff;color:#21172b;border:1px solid var(--ss-border);border-radius:24px;box-shadow:var(--ss-shadow)}
+.login-page{display:grid;grid-template-columns:minmax(0,1fr) minmax(380px,.8fr);align-items:center;gap:56px;min-height:calc(100vh - 60px)}
+.login-info{max-width:680px}
+.form-group{margin:16px 0}
+.form-group input,.form-group select,.form-group textarea,.container input,.container select,.container textarea,input,select,textarea{border-radius:11px}
+/* Contacts, profile and safety tools */
+.contacts-list-section,.profile-section,.contacts-intro{padding:24px;margin-bottom:20px}
+.contacts-container,.contacts-list,.profile-menu-section{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.profile-user-card{display:flex;align-items:center;gap:22px;padding:26px}
+.profile-avatar{width:88px;height:88px;flex:0 0 88px}
+/* Safe route and maps */
+.safe-route-container{max-width:1500px}
+.safe-route-results{display:grid;grid-template-columns:minmax(300px,.8fr) minmax(0,1.4fr);gap:22px;align-items:start}
+.safe-route-map-section{padding:20px}
+#safeRouteMap,#safeRouteMapSection,#liveMap,#adminCrimeMap,#safe-route-map,.admin-map{width:100%;min-height:460px;border-radius:16px;overflow:hidden}
+.safe-route-map-wrapper{min-height:460px}
+/* Admin analytics */
+.admin-summary-grid{grid-template-columns:repeat(4,minmax(0,1fr));margin:24px 0}
+.admin-analytics-grid{grid-template-columns:repeat(2,minmax(0,1fr));margin:22px 0}
+.admin-response-grid,.admin-contact-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.admin-table-wrapper{width:100%;overflow-x:auto;border-radius:14px;background:#fff;color:#21172b}
+.admin-table{width:100%;min-width:680px;border-collapse:collapse}
+.admin-table th,.admin-table td{padding:14px 16px;text-align:left}
+/* Chatbot, voice, evidence and timeline */
+.chatbot-window{width:min(440px,calc(100vw - 36px));max-height:min(680px,80vh)}
+.chat-messages,#chatMessages{max-height:520px;overflow-y:auto}
+.evidence-search-row,.timeline-controls,.actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.evidence-search{width:min(520px,100%)}
+.timeline{width:100%;max-width:1100px;margin:24px auto}
+.voice-mobile-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+/* Tables, statuses and controls */
+.status,.status-box,.risk-level,.home-sos-status{border-radius:999px}
+button,.button,.login-button,.permission-button,.continue-button,.save-contact-button,.incident-submit-button,.safe-route-button,.find-route-button{border-radius:12px}
+/* Responsive fallback: desktop first, tablet and mobile retain usable compact layout */
+@media(max-width:1050px){.shesafe-home,.shesafe-tools-page,.feature-page,.contacts-mobile-page,.profile-mobile-page,.evidence-page,.incident-page,.safe-route-container,.admin-container,.permission-container,.sos-container,.container,.login-page{width:min(100% - 36px,900px)}.admin-summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.mobile-quick-grid,.shesafe-tools-grid,.grid,.health-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.safe-route-results{grid-template-columns:1fr}}
+@media(max-width:680px){.shesafe-home,.shesafe-tools-page,.feature-page,.contacts-mobile-page,.profile-mobile-page,.evidence-page,.incident-page,.safe-route-container,.admin-container,.permission-container,.sos-container,.container,.login-page{width:calc(100% - 24px)}.dashboard,.shesafe-home,.feature-page,.contacts-mobile-page,.profile-mobile-page,.evidence-page,.incident-page,.safe-route-container,.admin-container,.permission-container{padding:14px 0 30px}.mobile-home-header,.dashboard-header,.admin-header,.contacts-header,.evidence-header,.incident-header,.profile-header,.profile-mobile-header,.permission-header,.shesafe-page-header{padding:15px;gap:12px;flex-wrap:wrap}.mobile-quick-grid,.shesafe-tools-grid,.grid,.health-grid,.admin-summary-grid,.admin-analytics-grid,.admin-response-grid,.admin-contact-grid,.incident-upload-grid,.contacts-container,.contacts-list,.profile-menu-section{grid-template-columns:1fr}.mobile-welcome-card,.welcome{padding:22px}.home-sos-card,.sos-section{padding:22px 14px}.home-sos-button,.sos-button{width:124px;height:124px}.container,.login-card,.otp-card{margin:24px auto;padding:25px 20px}.login-page{display:block;min-height:auto}.profile-user-card{flex-wrap:wrap}.safe-route-results{grid-template-columns:1fr}#safeRouteMap,#safeRouteMapSection,#liveMap,#adminCrimeMap,#safe-route-map,.admin-map,.safe-route-map-wrapper{min-height:320px}}
+
+/* ===== Desktop corrections based on the actual SheSafe page markup ===== */
+@media (min-width: 1100px) {
+  .dashboard { width: min(1500px, calc(100% - 72px)); margin: 0 auto; padding: 24px 0 70px; }
+  .dashboard > .feature-page { max-width: none !important; width: 100% !important; margin: 0 !important; }
+  /* Pages containing several feature panels (Nearby Services) use a balanced grid. */
+  .dashboard:has(> .feature-page:nth-of-type(3)) {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-content: start;
+  }
+  .dashboard:has(> .feature-page:nth-of-type(3)) > .dashboard-header { grid-column: 1 / -1; }
+  .dashboard:has(> .feature-page:nth-of-type(3)) > .feature-page { min-height: 230px; }
+  .dashboard:has(> .feature-page:nth-of-type(3)) > .feature-page:last-child { grid-column: 1 / -1; }
+  .feature-page { padding: 28px 30px !important; border-radius: 20px !important; box-shadow: 0 12px 34px rgba(0,0,0,.16); }
+  .feature-page h2, .feature-page h3 { color: #6d28d9 !important; }
+  .feature-page .actions { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
+  .feature-page .actions button, .feature-page > button { min-height: 48px; width: 100%; border: 0; border-radius: 12px; background: linear-gradient(110deg,#6d28d9,#9333ea); color: #fff; font-weight: 700; padding: 12px 18px; }
+  .contacts-mobile-page, .profile-mobile-page { width: min(1500px, calc(100% - 72px)) !important; max-width: none !important; margin: 0 auto !important; padding: 28px 0 110px !important; }
+  .contacts-header h1, .profile-header-text h1 { color: #6d28d9 !important; }
+  .contacts-header p, .profile-header-text p { color: #766b82 !important; }
+  .contacts-header > div:last-child, .profile-header-text { text-align: right; }
+  .contacts-intro { min-height: 130px; }
+  .add-contact-button { width: 100%; min-height: 64px; display: flex; align-items: center; gap: 14px; padding: 12px 20px; border: 0; border-radius: 18px; background: linear-gradient(110deg,#7c3aed,#9333ea); color: white; font-weight: 800; }
+  .add-contact-arrow { margin-left: auto; }
+  .contacts-list-section { width: 100%; }
+  #contactsContainer { width: 100%; }
+  .contacts-loading { min-height: 86px; display: grid; place-items: center; border-radius: 18px; background: #fff; color: #766b82; }
+  .profile-menu-section { display: grid !important; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; align-items: stretch; }
+  .profile-section-heading { grid-column: 1 / -1; color: #d8c4ff !important; }
+  .profile-menu-item { width: 100%; min-height: 112px; display: flex; align-items: center; gap: 16px; padding: 20px; border: 0; border-radius: 20px; background: #fff; color: #21172b; text-align: left; }
+  .profile-menu-content { flex: 1; }
+  .profile-menu-content strong { color: #28153d; }
+  .profile-menu-content span { color: #766b82; }
+  .profile-logout-section { margin-top: 22px; }
+  .profile-logout-button { width: 100%; min-height: 60px; }
+  .profile-save-button { display: inline-flex; align-items: center; justify-content: center; width: auto !important; min-width: 220px; min-height: 48px; margin: 18px 0 28px; padding: 12px 24px; border: 0; border-radius: 12px; background: linear-gradient(110deg,#6d28d9,#9333ea); color: #fff; font-weight: 700; }
+  .mobile-bottom-nav { position: fixed; z-index: 1000; left: 24px; right: 24px; bottom: 16px; width: auto !important; max-width: none !important; min-height: 72px; border-radius: 22px; box-shadow: 0 8px 30px rgba(0,0,0,.22); }
+  .chatbot-window, #chatMessages { width: 100%; }
+  .dashboard-header h1, .dashboard-header h2 { color: #6d28d9 !important; }
+}
+@media (min-width: 681px) and (max-width: 1099px) {
+  .feature-page { width: min(100% - 40px, 900px) !important; max-width: 900px !important; margin: 20px auto !important; }
+  .contacts-mobile-page, .profile-mobile-page { width: calc(100% - 40px) !important; }
+  .contacts-header h1, .profile-header-text h1 { color: #6d28d9 !important; }
+  .contacts-header p, .profile-header-text p { color: #766b82 !important; }
+}
+
+
+/* =========================================================
+   FINAL DESKTOP FIX: HOME (SOS + VOICE SOS) AND SAFETY TOOLS
+   ========================================================= */
+@media (min-width: 1100px) {
+  /* Use the available desktop canvas instead of a narrow mobile-like column. */
+  .shesafe-home,
+  .shesafe-tools-page {
+    width: min(1800px, calc(100% - 72px)) !important;
+    max-width: none !important;
+    margin-inline: auto !important;
+  }
+
+  /* Home: give the SOS and Voice SOS panels a balanced desktop layout. */
+  .shesafe-home .home-sos-card,
+  .shesafe-home .voice-home-card {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 24px 0 !important;
+    padding: 34px 40px !important;
+    border-radius: 22px !important;
+  }
+  .shesafe-home .home-sos-card {
+    min-height: 360px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .shesafe-home .home-sos-header h2 { font-size: clamp(26px, 2vw, 36px) !important; }
+  .shesafe-home .home-sos-header p,
+  .shesafe-home .home-sos-note { font-size: 16px !important; }
+  .shesafe-home .home-sos-button {
+    width: 160px !important;
+    height: 160px !important;
+    font-size: 38px !important;
+  }
+  .shesafe-home .voice-home-card {
+    min-height: 300px;
+    display: grid;
+    grid-template-columns: minmax(260px, .8fr) minmax(320px, 1.2fr);
+    grid-template-areas:
+      "heading status"
+      "description phrases"
+      "start stop"
+      "message message";
+    column-gap: 28px;
+    row-gap: 16px;
+    align-content: center;
+  }
+  .shesafe-home .voice-home-card h3 { grid-area: heading; font-size: 24px !important; }
+  .shesafe-home .voice-home-card > p { grid-area: description; font-size: 16px !important; }
+  .shesafe-home #voiceStatusBadge { grid-area: status; align-self: center; min-height: 46px; display: grid; place-items: center; font-size: 16px; }
+  .shesafe-home .voice-home-card h4 { grid-area: phrases; font-size: 17px !important; }
+  .shesafe-home .voice-phrase-grid { grid-area: phrases; margin-top: 34px; grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .shesafe-home .voice-phrase-grid span { min-height: 46px; display: grid; place-items: center; font-size: 15px !important; }
+  .shesafe-home #startVoiceRecognition { grid-area: start; }
+  .shesafe-home #stopVoiceRecognition { grid-area: stop; }
+  .shesafe-home .voice-home-card button { min-height: 52px; font-size: 15px !important; }
+  .shesafe-home #voiceEmergencyMessage { grid-area: message; }
+
+  /* Safety Tools: spread cards across the desktop width. */
+  .shesafe-tools-page .shesafe-page-header { width: 100% !important; }
+  .shesafe-tools-page .tools-title { margin: 28px 12px 20px !important; }
+  .shesafe-tools-page .shesafe-tools-grid {
+    width: 100% !important;
+    grid-template-columns: repeat(4, minmax(0,1fr)) !important;
+    gap: 22px !important;
+  }
+  .shesafe-tools-page .shesafe-tool-card {
+    min-height: 220px !important;
+    padding: 28px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    gap: 16px !important;
+    text-align: left !important;
+  }
+  .shesafe-tools-page .shesafe-tool-card .tool-icon {
+    width: 62px !important;
+    height: 62px !important;
+    display: grid !important;
+    place-items: center !important;
+    font-size: 30px !important;
+  }
+  .shesafe-tools-page .shesafe-tool-card h3 { font-size: 21px !important; }
+  .shesafe-tools-page .shesafe-tool-card p { font-size: 15px !important; line-height: 1.55 !important; }
+  .shesafe-tools-page .shesafe-tool-card > span { position: absolute; right: 24px; top: 24px; font-size: 24px; }
+  .shesafe-tools-page .mobile-bottom-nav { left: 24px; right: 24px; }
+}
+@media (min-width: 1100px) and (max-width: 1450px) {
+  .shesafe-tools-page .shesafe-tools-grid { grid-template-columns: repeat(3,minmax(0,1fr)) !important; }
+}
+@media (min-width: 681px) and (max-width: 1099px) {
+  .shesafe-home,.shesafe-tools-page { width: calc(100% - 40px) !important; }
+  .shesafe-tools-page .shesafe-tools-grid { grid-template-columns: repeat(2,minmax(0,1fr)) !important; }
+  .shesafe-home .voice-home-card { padding: 24px !important; }
+}

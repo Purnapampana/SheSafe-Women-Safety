@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Fake Call - SheSafe</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+    <link rel="stylesheet" href="desktop.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="dashboard-header">
+
+        <div>
+
+            <h1>📞 Fake Call Generator</h1>
+
+            <p>
+                Create a simulated incoming call
+            </p>
+
+        </div>
+
+        <button
+            onclick="window.location.href='home.html'">
+
+            Back
+
+        </button>
+
+    </header>
+
+
+    <!-- ================= FAKE CALL SETTINGS ================= -->
+
+    <div class="feature-page">
+
+        <h2>⚙️ Fake Call Settings</h2>
+
+
+        <!-- CALLER NAME -->
+
+        <label for="fakeCallerName">
+
+            Caller Name
+
+        </label>
+
+        <input
+            type="text"
+            id="fakeCallerName"
+            placeholder="Example: Mom"
+            value="Mom">
+
+
+        <!-- CALL TIMING -->
+
+        <label for="fakeCallDelay">
+
+            Call After
+
+        </label>
+
+        <select id="fakeCallDelay">
+
+            <option value="5">
+                5 seconds
+            </option>
+
+            <option value="10">
+                10 seconds
+            </option>
+
+            <option value="30">
+                30 seconds
+            </option>
+
+            <option value="60">
+                1 minute
+            </option>
+
+            <option value="300">
+                5 minutes
+            </option>
+
+        </select>
+
+
+        <!-- RINGTONE -->
+
+        <label for="fakeRingtone">
+
+            🔔 Ringtone
+
+        </label>
+
+        <select id="fakeRingtone">
+
+            <option value="classic">
+                Classic
+            </option>
+
+            <option value="soft">
+                Soft
+            </option>
+
+            <option value="urgent">
+                Urgent
+            </option>
+
+        </select>
+        <label for="fakeVoiceGender">
+    🎙️ Caller Voice
+</label>
+
+<select id="fakeVoiceGender">
+    <option value="female">👩 Female Voice</option>
+    <option value="male">👨 Male Voice</option>
+</select>
+
+
+        <!-- VOICE -->
+
+        <label for="fakeVoiceMessage">
+
+            🔊 Voice Message
+
+        </label>
+
+        <textarea
+            id="fakeVoiceMessage"
+            placeholder="Example: Hello, where are you?">
+Hello, where are you?
+        </textarea>
+
+
+        <!-- BUTTONS -->
+
+        <div class="actions">
+
+            <button
+                onclick="scheduleFakeCall()">
+
+                📅 Schedule Fake Call
+
+            </button>
+
+
+            <button
+                onclick="callNow()">
+
+                📞 Call Now
+
+            </button>
+
+
+            <button
+                onclick="cancelFakeCall()">
+
+                ⛔ Cancel Scheduled Call
+
+            </button>
+
+        </div>
+
+
+        <!-- STATUS -->
+
+        <div
+            id="fakeCallStatus"
+            class="status-box">
+
+            No fake call scheduled.
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= INCOMING CALL ================= -->
+
+    <div
+        id="fakeCallScreen"
+        style="
+            display:none;
+            position:fixed;
+            inset:0;
+            background:#111;
+            z-index:9999;
+            color:white;
+            text-align:center;
+            padding-top:100px;
+        ">
+
+
+        <div
+            style="
+                font-size:80px;
+                margin-bottom:20px;
+            ">
+
+            👤
+
+        </div>
+
+
+        <h1
+            id="incomingCallerName">
+
+            Mom
+
+        </h1>
+
+
+        <p
+            style="
+                font-size:20px;
+                opacity:0.7;
+            ">
+
+            Incoming call...
+
+        </p>
+
+
+        <div
+            style="
+                margin-top:80px;
+                display:flex;
+                justify-content:center;
+                gap:30px;
+            ">
+
+
+            <button
+                onclick="rejectFakeCall()"
+                style="
+                    background:#dc3545;
+                    color:white;
+                    border:none;
+                    border-radius:50%;
+                    width:70px;
+                    height:70px;
+                    font-size:28px;
+                    cursor:pointer;
+                ">
+
+                📵
+
+            </button>
+
+
+            <button
+                onclick="answerFakeCall()"
+                style="
+                    background:#28a745;
+                    color:white;
+                    border:none;
+                    border-radius:50%;
+                    width:70px;
+                    height:70px;
+                    font-size:28px;
+                    cursor:pointer;
+                ">
+
+                📞
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

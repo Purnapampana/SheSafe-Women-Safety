@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Report Incident - SheSafe</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+    <link rel="stylesheet" href="desktop.css">
+
+</head>
+
+<body>
+
+    <div class="incident-page">
+
+        <!-- HEADER -->
+
+        <div class="incident-header">
+
+            <div>
+
+                <h1>
+                    🚨 Report an Incident
+                </h1>
+
+                <p>
+                    Help make your community safer
+                </p>
+
+            </div>
+
+            <button
+                class="incident-back-button"
+                onclick="history.back()">
+
+                Back
+
+            </button>
+
+        </div>
+
+
+        <!-- REPORT CARD -->
+
+        <div class="incident-main-card">
+
+            <div class="incident-section-title">
+
+                <span>📝</span>
+
+                <div>
+
+                    <h2>
+                        Incident Details
+                    </h2>
+
+                    <p>
+                        Tell us what happened
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- INCIDENT TYPE -->
+
+            <div class="incident-form-group">
+
+                <label for="incidentType">
+                    Incident Type
+                </label>
+
+                <select id="incidentType">
+
+                    <option value="">
+                        Select incident type
+                    </option>
+
+                    <option value="HARASSMENT">
+                        🚫 Harassment
+                    </option>
+
+                    <option value="THEFT">
+                        👜 Theft
+                    </option>
+
+                    <option value="ASSAULT">
+                        ⚠️ Assault
+                    </option>
+
+                    <option value="STALKING">
+                        👀 Stalking
+                    </option>
+
+                    <option value="SUSPICIOUS_PERSON">
+                        👤 Suspicious Person
+                    </option>
+
+                    <option value="UNSAFE_LOCATION">
+                        📍 Unsafe Location
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- DESCRIPTION -->
+
+            <div class="incident-form-group">
+
+                <label for="incidentDescription">
+                    What happened?
+                </label>
+
+                <textarea
+                    id="incidentDescription"
+                    maxlength="1000"
+                    rows="5"
+                    placeholder="Describe the incident or why this location feels unsafe...">
+                </textarea>
+
+                <div class="incident-character-count">
+                    Maximum 1000 characters
+                </div>
+
+            </div>
+
+
+            <!-- LOCATION -->
+
+            <div class="incident-location-section">
+
+                <div class="incident-section-title small">
+
+                    <span>📍</span>
+
+                    <div>
+
+                        <h2>
+                            Location
+                        </h2>
+
+                        <p>
+                            Automatically detect where
+                            the incident occurred
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="incidentLocationStatus"
+                    class="incident-location-status">
+
+                    📍 Location not detected
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="incident-location-button"
+                    onclick="detectIncidentReportLocation()">
+
+                    📍 Detect My Location
+
+                </button>
+
+            </div>
+
+
+            <!-- EVIDENCE -->
+
+            <div class="incident-evidence-section">
+
+                <div class="incident-section-title small">
+
+                    <span>📎</span>
+
+                    <div>
+
+                        <h2>
+                            Evidence
+                            <small>(Optional)</small>
+                        </h2>
+
+                        <p>
+                            Add photos or videos if available
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="incident-upload-grid">
+
+                    <!-- PHOTO -->
+
+                    <label class="incident-upload-card">
+
+                        <div class="incident-upload-icon">
+                            📷
+                        </div>
+
+                        <strong>
+                            Add Photo
+                        </strong>
+
+                        <span>
+                            JPG, PNG
+                        </span>
+
+                        <input
+                            type="file"
+                            id="incidentPhoto"
+                            accept="image/*">
+
+                    </label>
+
+
+                    <!-- VIDEO -->
+
+                    <label class="incident-upload-card">
+
+                        <div class="incident-upload-icon">
+                            🎥
+                        </div>
+
+                        <strong>
+                            Add Video
+                        </strong>
+
+                        <span>
+                            MP4, MOV
+                        </span>
+
+                        <input
+                            type="file"
+                            id="incidentVideo"
+                            accept="video/*">
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- SUBMIT -->
+
+            <button
+                type="button"
+                class="incident-submit-button"
+                onclick="submitCrowdIncident()">
+
+                🚨 Submit Incident Report
+
+            </button>
+
+
+            <!-- STATUS -->
+
+            <div
+                id="incidentReportStatus"
+                class="incident-report-status">
+            </div>
+
+        </div>
+
+
+        <!-- HOW IT HELPS -->
+
+        <div class="incident-help-card">
+
+            <div class="incident-help-icon">
+                🛡️
+            </div>
+
+            <div>
+
+                <h2>
+                    How your report helps
+                </h2>
+
+                <p>
+                    Your report contributes to identifying
+                    areas that may need additional safety
+                    attention.
+                </p>
+
+
+                <div class="incident-help-points">
+
+                    <span>
+                        📍 GPS Location
+                    </span>
+
+                    <span>
+                        📊 Risk Analysis
+                    </span>
+
+                    <span>
+                        🛡️ Community Safety
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

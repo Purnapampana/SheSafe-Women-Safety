@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Risk Prediction - SheSafe</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="desktop.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🤖 AI Risk Prediction</h1>
+
+        <p>
+            Analyze your current situation and predict the safety risk.
+        </p>
+
+        <div class="risk-form">
+
+            <label>User ID</label>
+            <input
+                type="number"
+                id="userId"
+                placeholder="Enter User ID">
+
+            <label>Latitude</label>
+            <input
+                type="number"
+                step="any"
+                id="latitude"
+                placeholder="Enter latitude">
+
+            <label>Longitude</label>
+            <input
+                type="number"
+                step="any"
+                id="longitude"
+                placeholder="Enter longitude">
+
+            <label>Time of Day</label>
+
+            <select id="timeOfDay">
+                <option value="Day">☀️ Day</option>
+                <option value="Night">🌙 Night</option>
+            </select>
+
+            <label>Current Speed (km/h)</label>
+
+            <input
+                type="number"
+                step="any"
+                id="speed"
+                placeholder="Example: 5">
+
+            <button onclick="predictRisk()">
+                🔍 Predict Risk
+            </button>
+
+        </div>
+
+
+        <!-- RESULT -->
+
+        <div
+            id="riskResult"
+            class="risk-result"
+            style="display:none;">
+
+            <h2>Risk Analysis Result</h2>
+
+            <div class="risk-score">
+                Risk Score:
+                <span id="riskScore">0</span>/100
+            </div>
+
+            <div class="risk-level">
+                Risk Level:
+                <span id="riskLevel">LOW</span>
+            </div>
+
+            <div class="recommendation">
+
+                <strong>Recommendation:</strong>
+
+                <p id="recommendation">
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

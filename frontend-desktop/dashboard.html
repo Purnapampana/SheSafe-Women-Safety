@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Women Security - Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://kit.fontawesome.com/4d79e1g9ab.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="desktop.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <h1>🛡 Smart Women Security</h1>
+
+    <p class="welcome">
+        Welcome to your Safety Dashboard
+    </p>
+
+    <div class="grid">
+
+        <!-- Profile -->
+
+        <div class="card">
+
+            <h2>👤 Profile</h2>
+
+            <p>User Information</p>
+
+            <button onclick="window.location.href='profile.html'">
+                Open
+            </button>
+
+        </div>
+
+        <!-- GPS -->
+
+        <div class="card">
+
+            <h2>📍 Live GPS</h2>
+
+            <p id="locationText">
+
+                Location not loaded
+
+            </p>
+
+            <button onclick="getLocation()">
+
+                Get My Location
+
+            </button>
+
+        </div>
+
+        <!-- Emergency Contacts -->
+
+        <div class="card">
+
+            <h2>🚨 Emergency Contacts</h2>
+
+            <p>Add and manage contacts</p>
+
+            <button onclick="window.location.href='contacts.html'">
+
+                Open
+
+            </button>
+
+        </div>
+
+        <!-- SOS -->
+
+        <div class="card sos">
+
+            <h2>🆘 SOS</h2>
+
+            <p>Emergency Assistance</p>
+
+            <button onclick="window.location.href='sos.html'">
+
+                EMERGENCY SOS
+
+            </button>
+
+        </div>
+
+        <!-- AI Chatbot -->
+
+        <div class="card">
+
+            <h2>🤖 AI Assistant</h2>
+
+            <p>Ask Safety Questions</p>
+
+            <button onclick="window.location.href='chatbot.html'">
+
+                Open
+
+            </button>
+
+        </div>
+
+        <!-- Safe Route -->
+
+        <div class="card">
+
+            <h2>🗺 Safe Route</h2>
+
+            <p>Find safest path</p>
+
+            <button onclick="window.location.href='route.html'">
+
+                Open
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <button class="logout" onclick="logout()">
+
+        Logout
+
+    </button>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
