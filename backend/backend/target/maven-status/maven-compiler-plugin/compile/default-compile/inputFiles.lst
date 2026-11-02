@@ -121,6 +121,7 @@ C:\Users\purna\OneDrive\Desktop\shesafe - Copy\backend\backend\src\main\java\com
 C:\Users\purna\OneDrive\Desktop\shesafe - Copy\backend\backend\src\main\java\com\womensecurity\backend\security\JwtUtil.java
 C:\Users\purna\OneDrive\Desktop\shesafe - Copy\backend\backend\src\main\java\com\womensecurity\backend\service\AdminDashboardService.java
 C:\Users\purna\OneDrive\Desktop\shesafe - Copy\backend\backend\src\main\java\com\womensecurity\backend\service\AuthenticationService.java
+C:\Users\purna\OneDrive\Desktop\shesafe - Copy\backend\backend\src\main\java\com\womensecurity\backend\service\BrevoEmailService.java
 C:\Users\purna\OneDrive\Desktop\shesafe - Copy\backend\backend\src\main\java\com\womensecurity\backend\service\CallRecordService.java
 C:\Users\purna\OneDrive\Desktop\shesafe - Copy\backend\backend\src\main\java\com\womensecurity\backend\service\ChatService.java
 C:\Users\purna\OneDrive\Desktop\shesafe - Copy\backend\backend\src\main\java\com\womensecurity\backend\service\CrimeHotspotService.java

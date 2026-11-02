@@ -29,6 +29,8 @@ public class UserService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+private BrevoEmailService brevoEmailService;
 
     @Autowired
     private JwtUtil jwtUtil;
@@ -158,50 +160,31 @@ if (!java.util.Set.of("en", "te", "hi", "ur")
 
     try {
 
-        SimpleMailMessage message =
-                new SimpleMailMessage();
+    String emailContent =
+            "Hello " + request.getFullName().trim() + ",\n\n"
+            + "Welcome to SheSafe.\n\n"
+            + "Your registration OTP is:\n\n"
+            + otp
+            + "\n\nThis OTP is valid for 5 minutes."
+            + "\n\nPlease do not share this OTP with anyone."
+            + "\n\nIf you did not create a SheSafe account, "
+            + "please ignore this email."
+            + "\n\nSheSafe Security Team";
 
-        message.setTo(email);
+    brevoEmailService.sendEmail(
+            email,
+            request.getFullName().trim(),
+            "SheSafe - Registration OTP",
+            emailContent
+    );
 
-        message.setSubject(
-                "SheSafe - Registration OTP"
-        );
+} catch (Exception e) {
 
-        message.setText(
+    e.printStackTrace();
+    pendingRegistrations.remove(email);
 
-                "Hello "
-                + request.getFullName().trim()
-                + ",\n\n"
-
-                + "Welcome to SheSafe.\n\n"
-
-                + "Your registration OTP is:\n\n"
-
-                + otp
-
-                + "\n\nThis OTP is valid for 5 minutes."
-
-                + "\n\nPlease do not share this OTP with anyone."
-
-                + "\n\nIf you did not create a SheSafe account, "
-                + "please ignore this email."
-
-                + "\n\nSheSafe Security Team"
-        );
-
-
-        mailSender.send(message);
-
-
-    } catch (Exception e) {
-
-        e.printStackTrace();
-
-        // Remove temporary registration
-        pendingRegistrations.remove(email);
-
-        return "Unable to send registration OTP. Please try again.";
-    }
+    return "Unable to send registration OTP. Please try again.";
+}
 
 
     return "OTP sent successfully";
@@ -335,53 +318,31 @@ public String resendRegistrationOtp(String email) {
 
     try {
 
-        SimpleMailMessage message =
-                new SimpleMailMessage();
+    String emailContent =
+            "Hello " + oldData.getFullName() + ",\n\n"
+            + "Your new SheSafe registration OTP is:\n\n"
+            + newOtp
+            + "\n\nThis OTP is valid for 5 minutes."
+            + "\n\nYour previous OTP is no longer valid."
+            + "\n\nPlease do not share this OTP with anyone."
+            + "\n\nSheSafe Security Team";
 
-        message.setTo(normalizedEmail);
+    brevoEmailService.sendEmail(
+            normalizedEmail,
+            oldData.getFullName(),
+            "SheSafe - New Registration OTP",
+            emailContent
+    );
 
-        message.setSubject(
-                "SheSafe - New Registration OTP"
-        );
+} catch (Exception e) {
 
-        message.setText(
+    e.printStackTrace();
+    pendingRegistrations.remove(normalizedEmail);
 
-                "Hello "
-                + oldData.getFullName()
-                + ",\n\n"
-
-                + "Your new SheSafe registration OTP is:\n\n"
-
-                + newOtp
-
-                + "\n\nThis OTP is valid for 5 minutes."
-
-                + "\n\nYour previous OTP is no longer valid."
-
-                + "\n\nPlease do not share this OTP with anyone."
-
-                + "\n\nSheSafe Security Team"
-        );
-
-
-        mailSender.send(message);
-
-
-    } catch (Exception e) {
-
-        e.printStackTrace();
-
-        // If email fails, remove the newly
-        // generated temporary registration.
-        pendingRegistrations.remove(normalizedEmail);
-
-        return "Unable to send OTP. Please register again.";
-    }
-
-
+    return "Unable to send OTP. Please register again.";
+}
     return "OTP resent successfully";
 }
-
 
 
 

@@ -68,6 +68,7 @@ com\womensecurity\backend\dto\NotificationRequest.class
 com\womensecurity\backend\entity\PoliceStation.class
 com\womensecurity\backend\dto\RiskPredictionRequest.class
 com\womensecurity\backend\repository\UserRepository.class
+com\womensecurity\backend\service\BrevoEmailService.class
 com\womensecurity\backend\service\SuperAdminOtpService$OtpData.class
 com\womensecurity\backend\controller\EmailController.class
 com\womensecurity\backend\service\UserService.class
