@@ -1,0 +1,24 @@
+# Uploaded evidence - keep private
+**/uploads/
+!**/uploads/.gitkeep
+
+# Java / Maven generated files
+**/target/
+**/build/
+
+# Node dependencies
+node_modules/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# IDE and system files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
